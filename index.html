@@ -632,15 +632,14 @@ function renderCfgMarcas(){
 async function api(action, body=null) {
   if (!SCRIPT_URL){nav('config');return null;}
   return new Promise((resolve, reject) => {
-    const cbName = 'oc_cb_' + Date.now();
+    const cbName = 'oc_cb_' + Date.now() + '_' + Math.random().toString(36).slice(2);
     let url = SCRIPT_URL + '?action=' + action + '&callback=' + cbName;
     if (body) url += '&payload=' + encodeURIComponent(JSON.stringify(body));
 
-    // Timeout de 15 segundos
     const timeout = setTimeout(() => {
       cleanup();
-      reject(new Error('Tiempo de espera agotado. Verifica la URL en Configuración.'));
-    }, 15000);
+      reject(new Error('Tiempo agotado — verifica la URL en Configuración'));
+    }, 20000);
 
     function cleanup() {
       clearTimeout(timeout);
@@ -656,9 +655,12 @@ async function api(action, body=null) {
     };
 
     const script = document.createElement('script');
-    script.id = cbName;
+    script.id  = cbName;
     script.src = url;
-    script.onerror = () => { cleanup(); reject(new Error('No se pudo conectar con Google Sheets. Verifica la URL.')); };
+    script.onerror = () => {
+      cleanup();
+      reject(new Error('No se pudo conectar. Verifica la URL en Configuración.'));
+    };
     document.head.appendChild(script);
   });
 }
