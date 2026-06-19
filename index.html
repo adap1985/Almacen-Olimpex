@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Almacén Pro · Olimpex</title>
+<title>OlimpexCare · Soporte Técnico</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
@@ -11,176 +11,172 @@
 :root{
   --bg:#f7f8fa;--surface:#fff;--surface2:#f1f3f5;--border:#e2e6ea;
   --text:#1a1a2e;--text2:#5c6470;--text3:#9ba3af;
-  --green:#1D9E75;--green-d:#0F6E56;--green-l:#E1F5EE;--green-lt:#9FE1CB;
+  --green:#1D9E75;--green-d:#0F6E56;--green-l:#E1F5EE;
   --amber:#EF9F27;--amber-l:#FAEEDA;--amber-d:#854F0B;
   --red:#E24B4A;--red-l:#FCEBEB;--red-d:#A32D2D;
   --blue:#378ADD;--blue-l:#E6F1FB;--blue-d:#185FA5;
+  --purple:#7C3AED;--purple-l:#EDE9FE;--purple-d:#5B21B6;
+  --teal:#0D9488;--teal-l:#CCFBF1;
   --gray-l:#F1EFE8;--gray-d:#5F5E5A;
   --radius:8px;--radius-lg:12px;
-  --shadow:0 1px 3px rgba(0,0,0,0.08);
+  --shadow:0 1px 4px rgba(0,0,0,0.08);
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;color:var(--text);background:var(--bg);min-height:100vh}
 a{color:var(--green);text-decoration:none}
 
-/* ── Layout ── */
+/* Layout */
 .app{display:flex;min-height:100vh}
-.sidebar{width:230px;min-width:230px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:50}
+.sidebar{width:230px;min-width:230px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:50;overflow-y:auto}
 .main{margin-left:230px;flex:1;padding:1.5rem;min-height:100vh}
 
-/* ── Sidebar ── */
+/* Sidebar */
 .sidebar-logo{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
-.logo-icon{width:34px;height:34px;background:var(--green);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
-.logo-text h1{font-size:14px;font-weight:600;line-height:1.2}
-.logo-text p{font-size:11px;color:var(--text2)}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--green),var(--blue));border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px;flex-shrink:0}
+.logo-text h1{font-size:15px;font-weight:700;line-height:1.1}
+.logo-text p{font-size:10px;color:var(--text2);margin-top:1px}
 .nav-section{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;padding:.9rem 1.25rem .3rem}
 .nav-item{display:flex;align-items:center;gap:10px;padding:8px 1.25rem;cursor:pointer;font-size:13px;color:var(--text2);transition:all .15s;border-left:2px solid transparent;user-select:none}
 .nav-item:hover{background:var(--surface2);color:var(--text)}
 .nav-item.active{background:var(--green-l);color:var(--green-d);border-left-color:var(--green);font-weight:500}
 .nav-item i{font-size:17px;width:20px;text-align:center}
-.nav-badge{margin-left:auto;background:var(--red);color:#fff;border-radius:99px;font-size:10px;padding:1px 6px;font-weight:600}
+.nav-badge{margin-left:auto;background:var(--red);color:#fff;border-radius:99px;font-size:10px;padding:1px 6px;font-weight:600;min-width:18px;text-align:center}
 .sidebar-footer{margin-top:auto;padding:.75rem 1.25rem;border-top:1px solid var(--border);font-size:11px;color:var(--text3)}
 
-/* ── Topbar ── */
-.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;gap:1rem;flex-wrap:wrap}
-.topbar h2{font-size:18px;font-weight:600}
+/* Topbar */
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;gap:1rem;flex-wrap:wrap}
+.topbar h2{font-size:18px;font-weight:700}
 .topbar-actions{display:flex;gap:8px;align-items:center}
 
-/* ── Buttons ── */
+/* Buttons */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);color:var(--text);font-size:13px;cursor:pointer;transition:all .15s;font-family:inherit;white-space:nowrap}
-.btn:hover{background:var(--surface2);border-color:#c8cdd3}
+.btn:hover{background:var(--surface2)}
 .btn:active{transform:scale(.98)}
 .btn-primary{background:var(--green);border-color:var(--green);color:#fff}
 .btn-primary:hover{background:var(--green-d);border-color:var(--green-d)}
 .btn-sm{padding:4px 10px;font-size:12px}
-.btn-icon{padding:6px;width:32px;height:32px;justify-content:center}
+.btn-icon{padding:6px;width:30px;height:30px;justify-content:center}
 
-/* ── Metrics ── */
-.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:1.5rem}
-.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem}
-.metric .label{font-size:12px;color:var(--text2);margin-bottom:6px;display:flex;align-items:center;gap:5px}
-.metric .value{font-size:26px;font-weight:600;line-height:1}
-.metric .sub{font-size:11px;color:var(--text3);margin-top:4px}
+/* Metrics */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:1.25rem}
+.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:.9rem 1.1rem}
+.metric .label{font-size:11px;color:var(--text2);margin-bottom:5px;display:flex;align-items:center;gap:5px}
+.metric .value{font-size:26px;font-weight:700;line-height:1}
+.metric .sub{font-size:11px;color:var(--text3);margin-top:3px}
 
-/* ── Cards ── */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1rem}
-.card-title{font-size:14px;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:8px;color:var(--text)}
+/* Cards */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.1rem 1.25rem;margin-bottom:1rem}
+.card-title{font-size:13px;font-weight:600;margin-bottom:.9rem;display:flex;align-items:center;gap:7px}
 
-/* ── Search & filters ── */
-.search-row{display:flex;gap:8px;margin-bottom:.75rem;flex-wrap:wrap}
-.search-wrap{display:flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);flex:1;min-width:200px}
-.search-wrap i{color:var(--text3);font-size:16px;flex-shrink:0}
-.search-wrap input{border:none;background:transparent;font-size:13px;flex:1;color:var(--text);outline:none;min-width:0}
-.filter-select{padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);color:var(--text);font-size:13px;cursor:pointer}
-
-/* ── Table ── */
+/* Table */
 .table-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;font-size:13px}
-th{font-weight:500;color:var(--text2);text-align:left;padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap;background:var(--surface2)}
-td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+th{font-weight:500;color:var(--text2);text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);white-space:nowrap;background:var(--surface2);font-size:12px}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:middle}
 tr:last-child td{border-bottom:none}
 tbody tr:hover td{background:#fafbfc}
 
-/* ── Badges ── */
+/* Badges */
 .badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:500;white-space:nowrap}
-.b-stock{background:var(--green-l);color:var(--green-d)}
-.b-low{background:var(--amber-l);color:var(--amber-d)}
-.b-out{background:var(--red-l);color:var(--red-d)}
-.b-ok{background:var(--green-l);color:var(--green-d)}
-.b-pending{background:var(--amber-l);color:var(--amber-d)}
-.b-delay{background:var(--red-l);color:var(--red-d)}
-.b-progress{background:var(--blue-l);color:var(--blue-d)}
-.b-closed{background:var(--gray-l);color:var(--gray-d)}
-.b-entrada{background:var(--green-l);color:var(--green-d)}
-.b-salida{background:var(--red-l);color:var(--red-d)}
-.b-traslado{background:var(--blue-l);color:var(--blue-d)}
-.b-observacion{background:var(--amber-l);color:var(--amber-d)}
+.b-green{background:var(--green-l);color:var(--green-d)}
+.b-amber{background:var(--amber-l);color:var(--amber-d)}
+.b-red{background:var(--red-l);color:var(--red-d)}
+.b-blue{background:var(--blue-l);color:var(--blue-d)}
+.b-purple{background:var(--purple-l);color:var(--purple-d)}
+.b-teal{background:var(--teal-l);color:var(--teal)}
+.b-gray{background:var(--gray-l);color:var(--gray-d)}
 .b-baja{background:var(--gray-l);color:var(--gray-d)}
 .b-media{background:var(--amber-l);color:var(--amber-d)}
 .b-alta{background:var(--red-l);color:var(--red-d)}
 .b-critica{background:var(--red-d);color:#fff}
 
-/* ── Forms ── */
-.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.75rem;margin-bottom:.75rem}
+/* Forms */
+.form-section{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin:1rem 0 .5rem;display:flex;align-items:center;gap:6px}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.7rem;margin-bottom:.7rem}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.7rem}
+.form-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem;margin-bottom:.7rem}
 .form-group{display:flex;flex-direction:column;gap:4px}
 .form-group label{font-size:12px;font-weight:500;color:var(--text2)}
 .form-group input,.form-group select,.form-group textarea{padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);color:var(--text);font-size:13px;font-family:inherit;transition:border-color .15s}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(29,158,117,.12)}
-.form-group textarea{resize:vertical;min-height:72px}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(29,158,117,.1)}
+.form-group textarea{resize:vertical;min-height:70px}
 .required{color:var(--red)}
+.auto-field{padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface2);font-size:13px;color:var(--text2);display:flex;align-items:center;gap:6px}
+.auto-field .auto-tag{font-size:10px;color:var(--text3);margin-left:auto;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1px 5px}
 
-/* ── Modal ── */
-.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:center;justify-content:center;padding:1rem}
+/* Search */
+.search-row{display:flex;gap:8px;margin-bottom:.75rem;flex-wrap:wrap;align-items:center}
+.search-wrap{display:flex;align-items:center;gap:8px;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);flex:1;min-width:200px}
+.search-wrap i{color:var(--text3);font-size:15px;flex-shrink:0}
+.search-wrap input{border:none;background:transparent;font-size:13px;flex:1;color:var(--text);outline:none}
+.fsel{padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);color:var(--text);font-size:13px;cursor:pointer}
+
+/* Modal */
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-start;justify-content:center;padding:1.5rem 1rem;overflow-y:auto}
 .modal-backdrop.open{display:flex}
-.modal{background:var(--surface);border-radius:var(--radius-lg);border:1px solid var(--border);padding:1.5rem;width:720px;max-width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.15)}
-.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
-.modal-header h3{font-size:16px;font-weight:600}
-.modal-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border)}
+.modal{background:var(--surface);border-radius:var(--radius-lg);border:1px solid var(--border);padding:1.5rem;width:800px;max-width:100%;box-shadow:0 20px 60px rgba(0,0,0,.15);margin:auto}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+.modal-header h3{font-size:16px;font-weight:700}
+.modal-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:1.1rem;padding-top:.9rem;border-top:1px solid var(--border)}
 
-/* ── Chips de series ── */
-.sn-list{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
-.sn-chip{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:11px;font-family:monospace;display:inline-flex;align-items:center;gap:4px}
-.sn-rm{cursor:pointer;color:var(--text3);display:flex;align-items:center}
-.sn-rm:hover{color:var(--red)}
+/* Kanban */
+.kanban{display:grid;gap:8px;margin-bottom:1rem}
+.kanban-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.65rem .85rem;cursor:pointer;transition:box-shadow .15s;border-top:3px solid transparent}
+.kanban-card:hover{box-shadow:var(--shadow)}
+.kanban-card .k-num{font-size:22px;font-weight:700;line-height:1}
+.kanban-card .k-lbl{font-size:11px;color:var(--text2);margin-top:2px}
 
-/* ── Timeline ── */
-.timeline{position:relative;padding-left:20px}
-.timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:1.5px;background:var(--border)}
-.tl-item{position:relative;margin-bottom:1rem;padding-left:14px}
-.tl-item::before{content:'';position:absolute;left:-16px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--green);border:2px solid var(--surface)}
+/* Timeline */
+.tl{position:relative;padding-left:20px}
+.tl::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:1.5px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:.9rem;padding-left:14px}
+.tl-item::before{content:'';position:absolute;left:-15px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--green);border:2px solid var(--surface)}
 .tl-item.warn::before{background:var(--amber)}
 .tl-item.danger::before{background:var(--red)}
-.tl-date{font-size:11px;color:var(--text3);margin-bottom:2px}
+.tl-item.info::before{background:var(--blue)}
+.tl-date{font-size:11px;color:var(--text3);margin-bottom:1px}
 .tl-title{font-size:13px;font-weight:500}
 .tl-sub{font-size:12px;color:var(--text2);margin-top:2px}
 
-/* ── SLA progress ── */
-.progress-bar{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden;margin-top:5px}
-.progress-fill{height:100%;border-radius:3px;transition:width .3s}
-.pf-ok{background:var(--green)}
-.pf-warn{background:var(--amber)}
-.pf-danger{background:var(--red)}
+/* SLA bars */
+.sla-bar{height:5px;background:var(--surface2);border-radius:3px;overflow:hidden;margin-top:4px}
+.sla-fill{height:100%;border-radius:3px}
+.sla-ok{background:var(--green)}.sla-warn{background:var(--amber)}.sla-danger{background:var(--red)}
 
-/* ── Toast ── */
-.toast-wrap{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;display:flex;flex-direction:column;gap:8px}
-.toast{background:var(--text);color:#fff;padding:.6rem 1rem;border-radius:var(--radius);font-size:13px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);animation:slideIn .2s ease}
-.toast.success{background:var(--green-d)}
-.toast.error{background:var(--red-d)}
-@keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+/* Time chips */
+.time-chip{display:inline-flex;align-items:center;gap:4px;font-family:monospace;font-size:12px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:2px 7px}
+.time-chip.over{background:var(--red-l);border-color:var(--red-l);color:var(--red-d)}
+.time-chip.warn{background:var(--amber-l);border-color:var(--amber-l);color:var(--amber-d)}
 
-/* ── Login screen ── */
-.login-screen{position:fixed;inset:0;background:var(--bg);z-index:1000;display:flex;align-items:center;justify-content:center}
-.login-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem 2rem;width:380px;max-width:95vw;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.08)}
-.login-logo{width:56px;height:56px;background:var(--green);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:28px;color:#fff}
-.login-card h1{font-size:20px;font-weight:700;margin-bottom:4px}
-.login-card p{font-size:13px;color:var(--text2);margin-bottom:1.75rem}
-.login-domain{display:inline-flex;align-items:center;gap:6px;background:var(--green-l);color:var(--green-d);padding:4px 12px;border-radius:99px;font-size:12px;font-weight:500;margin-bottom:1.5rem}
+/* Login */
+.login-screen{position:fixed;inset:0;background:linear-gradient(135deg,#0F6E56 0%,#185FA5 100%);z-index:1000;display:flex;align-items:center;justify-content:center}
+.login-card{background:var(--surface);border-radius:var(--radius-lg);padding:2.5rem 2rem;width:380px;max-width:95vw;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.login-logo{width:60px;height:60px;background:linear-gradient(135deg,var(--green),var(--blue));border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;font-size:30px;color:#fff}
+.login-card h1{font-size:21px;font-weight:800;margin-bottom:3px}
+.login-card .sub{font-size:13px;color:var(--text2);margin-bottom:1.5rem}
+.login-domain{display:inline-flex;align-items:center;gap:6px;background:var(--green-l);color:var(--green-d);padding:4px 12px;border-radius:99px;font-size:12px;font-weight:600;margin-bottom:1.5rem}
 .login-error{background:var(--red-l);color:var(--red-d);border-radius:var(--radius);padding:.6rem 1rem;font-size:13px;margin-top:1rem;display:none}
 .login-footer{font-size:11px;color:var(--text3);margin-top:1.25rem}
 
-/* ── Loading overlay ── */
-.loading{position:fixed;inset:0;background:rgba(255,255,255,.7);z-index:500;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.75rem}
-.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite}
+/* Config cards */
+.config-url-card{border:2px dashed var(--border);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;margin-bottom:1rem}
+
+/* Loading */
+.loading{position:fixed;inset:0;background:rgba(255,255,255,.75);z-index:500;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.75rem}
+.spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── Config ── */
-.config-card{border:2px dashed var(--border);border-radius:var(--radius-lg);padding:2rem;text-align:center;margin-bottom:1.5rem}
-.config-card i{font-size:40px;color:var(--text3);display:block;margin-bottom:.75rem}
-.step-list{counter-reset:step;list-style:none;text-align:left;margin:.75rem auto;max-width:480px}
-.step-list li{counter-increment:step;display:flex;gap:.75rem;margin-bottom:.6rem;font-size:13px;align-items:flex-start}
-.step-list li::before{content:counter(step);background:var(--green);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
+/* Toast */
+.toast-wrap{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:var(--text);color:#fff;padding:.55rem 1rem;border-radius:var(--radius);font-size:13px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);animation:slideIn .2s ease;pointer-events:all}
+.toast.success{background:var(--green-d)}.toast.error{background:var(--red-d)}
+@keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── Responsive ── */
-@media(max-width:768px){
-  .sidebar{transform:translateX(-100%);transition:transform .2s}
-  .sidebar.open{transform:translateX(0)}
-  .main{margin-left:0}
-}
-
-/* ── Pages ── */
+/* Page */
 .page{display:none}.page.active{display:block}
 .empty{text-align:center;padding:3rem 1rem;color:var(--text2)}
-.empty i{font-size:36px;display:block;margin-bottom:.75rem;opacity:.35}
-code{font-family:monospace;font-size:.9em;background:var(--surface2);padding:1px 5px;border-radius:3px}
+.empty i{font-size:36px;display:block;margin-bottom:.75rem;opacity:.3}
+code{font-family:monospace;font-size:.88em;background:var(--surface2);padding:1px 5px;border-radius:3px}
+.divider{height:1px;background:var(--border);margin:.75rem 0}
 </style>
 </head>
 <body>
@@ -188,73 +184,54 @@ code{font-family:monospace;font-size:.9em;background:var(--surface2);padding:1px
 <!-- Loading -->
 <div class="loading" id="loading">
   <div class="spinner"></div>
-  <p style="font-size:13px;color:var(--text2)">Conectando con Google Sheets...</p>
+  <p style="font-size:13px;color:var(--text2)">Iniciando OlimpexCare...</p>
 </div>
 
-<!-- Toast container -->
+<!-- Toasts -->
 <div class="toast-wrap" id="toasts"></div>
 
-<!-- Login Screen -->
+<!-- Login -->
 <div class="login-screen" id="login-screen">
   <div class="login-card">
-    <div class="login-logo"><i class="ti ti-package"></i></div>
-    <h1>Almacén Pro</h1>
-    <p>Sistema de inventario y soporte técnico</p>
-    <div class="login-domain"><i class="ti ti-shield-check"></i>Acceso exclusivo @olimpexperu.com</div>
+    <div class="login-logo"><i class="ti ti-heart-rate-monitor"></i></div>
+    <h1>OlimpexCare</h1>
+    <p class="sub">Sistema de soporte técnico</p>
+    <div class="login-domain"><i class="ti ti-shield-check"></i>Solo @olimpexperu.com</div>
     <div id="g_id_onload"
       data-client_id="640883280433-4nr417f57vb56650kipiruhjt3cp2ttq.apps.googleusercontent.com"
-      data-context="signin"
-      data-ux_mode="popup"
-      data-callback="handleGoogleLogin"
-      data-auto_prompt="false">
-    </div>
-    <div class="g_id_signin"
-      data-type="standard"
-      data-shape="rectangular"
-      data-theme="outline"
-      data-text="signin_with"
-      data-size="large"
-      data-locale="es"
-      data-width="280">
-    </div>
-    <div class="login-error" id="login-error">
-      <i class="ti ti-alert-circle"></i> Solo se permite acceso con cuentas <strong>@olimpexperu.com</strong>
-    </div>
-    <div class="login-footer">Olimpex · Sistema interno de almacén</div>
+      data-callback="handleGoogleLogin" data-auto_prompt="false"></div>
+    <div class="g_id_signin" data-type="standard" data-shape="rectangular"
+      data-theme="outline" data-text="signin_with" data-size="large"
+      data-locale="es" data-width="280"></div>
+    <div class="login-error" id="login-error"><i class="ti ti-alert-circle"></i> Solo cuentas <strong>@olimpexperu.com</strong></div>
+    <div class="login-footer">Olimpex · Equipos Médicos</div>
   </div>
 </div>
 
-<!-- App (oculto hasta login) -->
+<!-- App -->
 <div class="app" id="main-app" style="display:none">
+
 <!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
+<div class="sidebar">
   <div class="sidebar-logo">
-    <div class="logo-icon"><i class="ti ti-package"></i></div>
-    <div class="logo-text">
-      <h1>Almacén Pro</h1>
-      <p>Olimpex.com</p>
-    </div>
+    <div class="logo-icon"><i class="ti ti-heart-rate-monitor"></i></div>
+    <div class="logo-text"><h1>OlimpexCare</h1><p>Soporte técnico</p></div>
   </div>
-  <span class="nav-section">Módulos</span>
+  <span class="nav-section">Principal</span>
   <div class="nav-item active" onclick="nav('dashboard')"><i class="ti ti-layout-dashboard"></i>Dashboard</div>
-  <div class="nav-item" onclick="nav('inventario')"><i class="ti ti-box"></i>Inventario</div>
-  <div class="nav-item" onclick="nav('movimientos')"><i class="ti ti-arrows-exchange"></i>Movimientos</div>
-  <div class="nav-item" onclick="nav('soporte')"><i class="ti ti-headset"></i>Soporte técnico <span class="nav-badge" id="badge-tickets">0</span></div>
-  <div class="nav-item" onclick="nav('trazabilidad')"><i class="ti ti-route"></i>Trazabilidad</div>
+  <div class="nav-item" onclick="nav('tickets')"><i class="ti ti-headset"></i>Tickets <span class="nav-badge" id="badge-open" style="display:none">0</span></div>
+  <div class="nav-item" onclick="nav('reportes')"><i class="ti ti-chart-bar"></i>Reportes SLA</div>
   <span class="nav-section">Configuración</span>
-  <div class="nav-item" onclick="nav('catalogo')"><i class="ti ti-database"></i>Catálogo base</div>
   <div class="nav-item" onclick="nav('config')"><i class="ti ti-settings"></i>Configuración</div>
-  <div class="sidebar-footer" id="sync-info">
-    <div id="user-info" style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+  <div class="sidebar-footer">
+    <div id="user-info" style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
       <img id="user-avatar" src="" style="width:24px;height:24px;border-radius:50%;display:none">
-      <div>
-        <div id="user-name" style="font-size:11px;font-weight:500;color:var(--text)"></div>
-        <div id="user-email" style="font-size:10px;color:var(--text3)"></div>
-      </div>
+      <div><div id="user-name" style="font-size:11px;font-weight:600;color:var(--text)"></div>
+      <div id="user-email" style="font-size:10px;color:var(--text3)"></div></div>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <span id="sync-time">Última sync: —</span>
-      <span id="btn-logout" onclick="logout()" style="cursor:pointer;color:var(--red-d);font-size:11px">Salir</span>
+    <div style="display:flex;justify-content:space-between">
+      <span id="sync-time">—</span>
+      <span onclick="logout()" style="cursor:pointer;color:var(--red-d)">Salir</span>
     </div>
   </div>
 </div>
@@ -271,103 +248,50 @@ code{font-family:monospace;font-size:.9em;background:var(--surface2);padding:1px
   <div class="metrics" id="dash-metrics"></div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
     <div class="card">
-      <div class="card-title"><i class="ti ti-alert-triangle" style="color:var(--amber)"></i>Tickets abiertos</div>
-      <div id="dash-tickets"></div>
+      <div class="card-title"><i class="ti ti-alert-triangle" style="color:var(--amber)"></i>Tickets sin técnico asignado</div>
+      <div id="dash-sin-asignar"></div>
     </div>
     <div class="card">
-      <div class="card-title"><i class="ti ti-arrows-exchange" style="color:var(--green)"></i>Últimos movimientos</div>
-      <div id="dash-movs"></div>
+      <div class="card-title"><i class="ti ti-clock-exclamation" style="color:var(--red)"></i>SLA en riesgo o vencido</div>
+      <div id="dash-sla-riesgo"></div>
     </div>
   </div>
   <div class="card">
-    <div class="card-title"><i class="ti ti-chart-bar" style="color:var(--blue)"></i>SLA de soporte — tickets cerrados</div>
-    <div id="dash-sla"></div>
+    <div class="card-title"><i class="ti ti-chart-bar" style="color:var(--blue)"></i>Tiempos de cierre — tickets recientes</div>
+    <div id="dash-tiempos"></div>
   </div>
 </div>
 
-<!-- ══ INVENTARIO ══ -->
-<div id="page-inventario" class="page">
+<!-- ══ TICKETS ══ -->
+<div id="page-tickets" class="page">
   <div class="topbar">
-    <h2>Inventario</h2>
+    <h2>Tickets de soporte</h2>
     <div class="topbar-actions">
       <button class="btn" onclick="loadData()"><i class="ti ti-refresh"></i>Actualizar</button>
-      <button class="btn btn-primary" onclick="openModal('modal-mov')"><i class="ti ti-plus"></i>Registrar movimiento</button>
+      <button class="btn btn-primary" onclick="abrirNuevo()"><i class="ti ti-plus"></i>Nuevo ticket</button>
     </div>
   </div>
+  <!-- Kanban -->
+  <div class="kanban" id="kanban-estados" style="grid-template-columns:repeat(7,1fr)"></div>
+  <!-- Filtros -->
   <div class="search-row">
     <div class="search-wrap">
       <i class="ti ti-search"></i>
-      <input id="inv-q" type="text" placeholder="Buscar por código, nombre o serie..." oninput="renderInventario()">
+      <input id="tk-q" type="text" placeholder="Buscar por cliente, producto, N° serie, ticket..." oninput="renderTickets()">
     </div>
-    <select class="filter-select" id="inv-cat" onchange="renderInventario()"><option value="">Todas las categorías</option></select>
-    <select class="filter-select" id="inv-est" onchange="renderInventario()">
-      <option value="">Todo el stock</option>
-      <option value="ok">Stock normal</option>
-      <option value="low">Stock bajo</option>
-      <option value="out">Sin stock</option>
-    </select>
-  </div>
-  <div class="card">
-    <div class="table-wrap"><table>
-      <thead><tr><th>Código</th><th>Producto</th><th>Categoría</th><th>Cantidad</th><th>Series en stock</th><th>Ubicación</th><th>Estado</th><th></th></tr></thead>
-      <tbody id="inv-tbody"></tbody>
-    </table></div>
-  </div>
-</div>
-
-<!-- ══ MOVIMIENTOS ══ -->
-<div id="page-movimientos" class="page">
-  <div class="topbar">
-    <h2>Movimientos</h2>
-    <div class="topbar-actions">
-      <button class="btn" onclick="loadData()"><i class="ti ti-refresh"></i>Actualizar</button>
-      <button class="btn btn-primary" onclick="openModal('modal-mov')"><i class="ti ti-plus"></i>Nuevo movimiento</button>
-    </div>
-  </div>
-  <div class="search-row">
-    <select class="filter-select" id="mov-tipo" onchange="renderMovimientos()">
-      <option value="">Todos los tipos</option>
-      <option value="entrada">Entrada</option>
-      <option value="salida">Salida</option>
-      <option value="traslado">Traslado</option>
-      <option value="observacion">Observación</option>
-    </select>
-    <select class="filter-select" id="mov-prod-f" onchange="renderMovimientos()"><option value="">Todos los productos</option></select>
-    <input type="date" class="filter-select" id="mov-desde" onchange="renderMovimientos()">
-    <input type="date" class="filter-select" id="mov-hasta" onchange="renderMovimientos()">
-  </div>
-  <div class="card">
-    <div class="table-wrap"><table>
-      <thead><tr><th>Fecha / Hora</th><th>Tipo</th><th>Producto</th><th>N° Serie(s)</th><th>Cant.</th><th>Ubicación</th><th>Responsable</th><th>Doc.</th><th>Nota</th></tr></thead>
-      <tbody id="mov-tbody"></tbody>
-    </table></div>
-  </div>
-</div>
-
-<!-- ══ SOPORTE ══ -->
-<div id="page-soporte" class="page">
-  <div class="topbar">
-    <h2>Soporte técnico</h2>
-    <div class="topbar-actions">
-      <button class="btn" onclick="loadData()"><i class="ti ti-refresh"></i>Actualizar</button>
-      <button class="btn btn-primary" onclick="abrirNuevoTicket()"><i class="ti ti-plus"></i>Nuevo ticket</button>
-    </div>
-  </div>
-  <!-- Kanban de estados rápido -->
-  <div id="sop-kanban" style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:1rem"></div>
-  <div class="search-row">
-    <select class="filter-select" id="sop-est" onchange="renderSoporte()">
+    <select class="fsel" id="tk-f-est" onchange="renderTickets()">
       <option value="">Todos los estados</option>
       <option value="reporte">Reporte</option>
       <option value="pendiente">Pendiente</option>
       <option value="cita_coordinada">Cita coordinada</option>
       <option value="en_revision">En revisión</option>
+      <option value="ayuda_asesor">Ayuda del asesor</option>
       <option value="piezas_importacion">Piezas en importación</option>
       <option value="cerrado">Cerrado</option>
     </select>
-    <select class="filter-select" id="sop-prod" onchange="renderSoporte()"><option value="">Todos los productos</option></select>
-    <select class="filter-select" id="sop-tec" onchange="renderSoporte()"><option value="">Todos los técnicos</option></select>
-    <select class="filter-select" id="sop-prio" onchange="renderSoporte()">
+    <select class="fsel" id="tk-f-tec" onchange="renderTickets()"><option value="">Todos los técnicos</option></select>
+    <select class="fsel" id="tk-f-asesor" onchange="renderTickets()"><option value="">Todos los asesores</option></select>
+    <select class="fsel" id="tk-f-prio" onchange="renderTickets()">
       <option value="">Todas las prioridades</option>
       <option value="critica">Crítica</option>
       <option value="alta">Alta</option>
@@ -375,42 +299,44 @@ code{font-family:monospace;font-size:.9em;background:var(--surface2);padding:1px
       <option value="baja">Baja</option>
     </select>
   </div>
-  <div class="card">
+  <div class="card" style="padding:0">
     <div class="table-wrap"><table>
-      <thead><tr><th>Ticket</th><th>Cliente / Producto</th><th>N° Serie</th><th>Asesor</th><th>Técnico</th><th>Apertura</th><th>Tiempo</th><th>SLA</th><th>Estado</th><th></th></tr></thead>
-      <tbody id="sop-tbody"></tbody>
+      <thead><tr>
+        <th>Ticket</th><th>Cliente</th><th>Producto / Serie</th>
+        <th>Asesor</th><th>Técnico</th>
+        <th title="Tiempo desde apertura hasta asignación al técnico">⏱ T. Asignación</th>
+        <th title="Tiempo total desde apertura">⏱ T. Total</th>
+        <th>SLA</th><th>Estado</th><th></th>
+      </tr></thead>
+      <tbody id="tk-tbody"></tbody>
     </table></div>
   </div>
 </div>
 
-<!-- ══ TRAZABILIDAD ══ -->
-<div id="page-trazabilidad" class="page">
-  <div class="topbar"><h2>Trazabilidad</h2></div>
-  <div class="card" style="margin-bottom:1rem">
-    <div class="form-grid" style="margin-bottom:0">
-      <div class="form-group">
-        <label>Buscar por producto</label>
-        <select id="traz-prod" onchange="renderTraz()"><option value="">Seleccionar producto...</option></select>
-      </div>
-      <div class="form-group">
-        <label>Buscar por número de serie</label>
-        <input type="text" id="traz-sn" placeholder="Ingresa N° de serie..." oninput="renderTraz()">
-      </div>
+<!-- ══ REPORTES ══ -->
+<div id="page-reportes" class="page">
+  <div class="topbar"><h2>Reportes SLA</h2>
+    <div class="topbar-actions">
+      <select class="fsel" id="rep-tec" onchange="renderReportes()"><option value="">Todos los técnicos</option></select>
+      <select class="fsel" id="rep-mes" onchange="renderReportes()"><option value="">Todos los meses</option></select>
     </div>
   </div>
-  <div id="traz-result"></div>
-</div>
-
-<!-- ══ CATÁLOGO ══ -->
-<div id="page-catalogo" class="page">
-  <div class="topbar">
-    <h2>Catálogo base</h2>
-    <button class="btn btn-primary" onclick="openModal('modal-prod')"><i class="ti ti-plus"></i>Agregar producto</button>
+  <div class="metrics" id="rep-metrics"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+    <div class="card">
+      <div class="card-title"><i class="ti ti-user" style="color:var(--blue)"></i>Rendimiento por técnico</div>
+      <div id="rep-por-tec"></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><i class="ti ti-clock" style="color:var(--amber)"></i>Tiempo promedio de asignación</div>
+      <div id="rep-asignacion"></div>
+    </div>
   </div>
   <div class="card">
+    <div class="card-title"><i class="ti ti-list" style="color:var(--green)"></i>Tickets cerrados — detalle de tiempos</div>
     <div class="table-wrap"><table>
-      <thead><tr><th>Código</th><th>Nombre</th><th>Categoría</th><th>Marca / Modelo</th><th>Stock mín.</th><th>SLA (hrs)</th><th>Series</th><th></th></tr></thead>
-      <tbody id="cat-tbody"></tbody>
+      <thead><tr><th>Ticket</th><th>Cliente</th><th>Técnico</th><th>Apertura</th><th>T. Asignación</th><th>T. Total</th><th>SLA</th><th>Resultado</th></tr></thead>
+      <tbody id="rep-tbody"></tbody>
     </table></div>
   </div>
 </div>
@@ -418,1160 +344,763 @@ code{font-family:monospace;font-size:.9em;background:var(--surface2);padding:1px
 <!-- ══ CONFIGURACIÓN ══ -->
 <div id="page-config" class="page">
   <div class="topbar"><h2>Configuración</h2></div>
-
-  <!-- Apps Script URL -->
-  <div class="config-card">
-    <i class="ti ti-api"></i>
-    <h3 style="font-size:16px;font-weight:600;margin-bottom:.5rem">Conectar con Google Sheets</h3>
-    <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">Pega aquí la URL de tu Apps Script Web App.</p>
-    <div style="display:flex;gap:8px;max-width:560px;margin:0 auto">
+  <div class="config-url-card">
+    <i class="ti ti-api" style="font-size:32px;color:var(--text3);display:block;margin-bottom:.75rem"></i>
+    <h3 style="font-size:15px;font-weight:600;margin-bottom:.4rem">Conexión con Google Sheets</h3>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:1rem">URL del Apps Script Web App</p>
+    <div style="display:flex;gap:8px;max-width:580px;margin:0 auto">
       <input type="text" id="cfg-url" placeholder="https://script.google.com/macros/s/..." style="flex:1;padding:8px 12px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px">
       <button class="btn btn-primary" onclick="saveConfig()"><i class="ti ti-check"></i>Guardar</button>
     </div>
-    <p style="font-size:12px;color:var(--text3);margin-top:.5rem">La URL se guarda en este navegador. Cada usuario debe pegarla una vez.</p>
   </div>
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
-    <!-- Marcas -->
-    <div class="card">
-      <div class="card-title"><i class="ti ti-building-factory-2" style="color:var(--green)"></i>Marcas que manejamos</div>
-      <div style="display:flex;gap:6px;margin-bottom:10px">
-        <input type="text" id="cfg-marca-inp" placeholder="Ej: Philips, GE Healthcare..." style="flex:1;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px" onkeydown="if(event.key==='Enter'){event.preventDefault();addMarca()}">
-        <button class="btn btn-sm btn-primary" onclick="addMarca()"><i class="ti ti-plus"></i>Agregar</button>
-      </div>
-      <div id="cfg-marcas-list" class="sn-list"></div>
-    </div>
-
     <!-- Técnicos -->
     <div class="card">
-      <div class="card-title"><i class="ti ti-tool" style="color:var(--blue)"></i>Equipo de soporte técnico</div>
-      <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap">
-        <input type="text" id="cfg-tec-nom" placeholder="Nombre" style="flex:1;min-width:100px;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px">
-        <input type="text" id="cfg-tec-email" placeholder="correo@olimpexperu.com" style="flex:2;min-width:160px;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px">
-        <select id="cfg-tec-rol" style="padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px;background:var(--surface)">
-          <option value="tecnico">Técnico</option>
-          <option value="jefe">Jefe soporte</option>
-        </select>
-        <button class="btn btn-sm btn-primary" onclick="addTecnico()"><i class="ti ti-plus"></i>Agregar</button>
+      <div class="card-title"><i class="ti ti-tool" style="color:var(--blue)"></i>Equipo técnico</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr auto auto;gap:6px;margin-bottom:8px;align-items:end">
+        <div class="form-group"><label>Nombre</label><input id="cfg-tec-n" type="text" placeholder="Nombre"></div>
+        <div class="form-group"><label>Correo</label><input id="cfg-tec-e" type="text" placeholder="correo@olimpexperu.com"></div>
+        <div class="form-group"><label>Rol</label><select id="cfg-tec-r"><option value="tecnico">Técnico</option><option value="jefe">Jefe</option></select></div>
+        <button class="btn btn-sm btn-primary" onclick="addTec()" style="margin-bottom:0;align-self:flex-end"><i class="ti ti-plus"></i></button>
       </div>
-      <div id="cfg-tecnicos-list"></div>
+      <div id="cfg-tec-list"></div>
+    </div>
+    <!-- Asesores -->
+    <div class="card">
+      <div class="card-title"><i class="ti ti-user-check" style="color:var(--amber)"></i>Asesores comerciales</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:6px;margin-bottom:8px;align-items:end">
+        <div class="form-group"><label>Nombre</label><input id="cfg-as-n" type="text" placeholder="Nombre"></div>
+        <div class="form-group"><label>Correo</label><input id="cfg-as-e" type="text" placeholder="correo@olimpexperu.com"></div>
+        <button class="btn btn-sm btn-primary" onclick="addAs()" style="align-self:flex-end"><i class="ti ti-plus"></i></button>
+      </div>
+      <div id="cfg-as-list"></div>
     </div>
   </div>
 
-  <!-- Asesores -->
+  <!-- Marcas -->
   <div class="card">
-    <div class="card-title"><i class="ti ti-user-check" style="color:var(--amber)"></i>Asesores comerciales</div>
-    <div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap">
-      <input type="text" id="cfg-as-nom" placeholder="Nombre del asesor" style="flex:1;min-width:120px;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px">
-      <input type="text" id="cfg-as-email" placeholder="correo@olimpexperu.com" style="flex:2;min-width:180px;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px">
-      <button class="btn btn-sm btn-primary" onclick="addAsesor()"><i class="ti ti-plus"></i>Agregar</button>
+    <div class="card-title"><i class="ti ti-building-factory-2" style="color:var(--green)"></i>Marcas / fabricantes que manejamos</div>
+    <div style="display:flex;gap:8px;margin-bottom:8px">
+      <input id="cfg-marca-n" type="text" placeholder="Ej: Philips, GE Healthcare, Siemens..." style="flex:1;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px" onkeydown="if(event.key==='Enter'){addMarca()}">
+      <button class="btn btn-sm btn-primary" onclick="addMarca()"><i class="ti ti-plus"></i>Agregar</button>
     </div>
-    <div id="cfg-asesores-list"></div>
+    <div id="cfg-marca-list" style="display:flex;flex-wrap:wrap;gap:6px"></div>
   </div>
 </div>
 
 </div><!-- /main -->
 </div><!-- /main-app -->
 
-<!-- ══ MODAL: Producto ══ -->
-<div id="modal-prod" class="modal-backdrop">
+<!-- ══ MODAL TICKET ══ -->
+<div id="modal-tk" class="modal-backdrop">
 <div class="modal">
   <div class="modal-header">
-    <h3 id="prod-title">Agregar producto al catálogo</h3>
-    <button class="btn btn-sm btn-icon" onclick="closeModal('modal-prod')"><i class="ti ti-x"></i></button>
+    <h3 id="modal-tk-title">Nuevo ticket de soporte</h3>
+    <button class="btn btn-sm btn-icon" onclick="closeModal('modal-tk')"><i class="ti ti-x"></i></button>
   </div>
-  <div class="form-grid">
-    <div class="form-group"><label>Código único <span class="required">*</span></label><input id="p-codigo" type="text" placeholder="Ej: EQ-001"></div>
-    <div class="form-group"><label>Nombre del producto <span class="required">*</span></label><input id="p-nombre" type="text" placeholder="Ej: Laptop Dell Latitude"></div>
-    <div class="form-group"><label>Categoría <span class="required">*</span></label><input id="p-cat" type="text" placeholder="Ej: Computadoras, Impresoras"></div>
-    <div class="form-group"><label>Marca</label><input id="p-marca" type="text" placeholder="Ej: Dell, HP, Epson"></div>
-    <div class="form-group"><label>Modelo</label><input id="p-modelo" type="text" placeholder="Ej: Latitude 5420"></div>
-    <div class="form-group"><label>Stock mínimo</label><input id="p-smin" type="number" value="1" min="0"></div>
-    <div class="form-group"><label>SLA soporte (horas) <span class="required">*</span></label><input id="p-sla" type="number" value="48" min="1"></div>
-    <div class="form-group"><label>Maneja N° de serie</label><select id="p-sn"><option value="si">Sí</option><option value="no">No</option></select></div>
-  </div>
-  <div class="form-group"><label>Descripción / especificaciones</label><textarea id="p-desc" placeholder="Detalles técnicos relevantes..."></textarea></div>
-  <div class="modal-footer">
-    <button class="btn" onclick="closeModal('modal-prod')">Cancelar</button>
-    <button class="btn btn-primary" onclick="saveProd()"><i class="ti ti-check"></i>Guardar producto</button>
-  </div>
-</div>
-</div>
 
-<!-- ══ MODAL: Movimiento ══ -->
-<div id="modal-mov" class="modal-backdrop">
-<div class="modal">
-  <div class="modal-header">
-    <h3>Registrar movimiento</h3>
-    <button class="btn btn-sm btn-icon" onclick="closeModal('modal-mov')"><i class="ti ti-x"></i></button>
+  <!-- SECCIÓN 1: Reporte -->
+  <div class="form-section"><i class="ti ti-clipboard-text"></i>Datos del reporte</div>
+  <div class="form-grid-3">
+    <div class="form-group"><label>Producto / Equipo <span class="required">*</span></label>
+      <input id="f-prod" type="text" placeholder="Nombre del equipo médico" list="list-prod">
+      <datalist id="list-prod"></datalist>
+    </div>
+    <div class="form-group"><label>Marca</label>
+      <input id="f-marca" type="text" placeholder="Selecciona o escribe" list="list-marcas">
+      <datalist id="list-marcas"></datalist>
+    </div>
+    <div class="form-group"><label>Área <span style="font-size:10px;color:var(--text3)">(opcional)</span></label>
+      <input id="f-area" type="text" placeholder="Ej: UCI, Emergencia, Laboratorio">
+    </div>
   </div>
-  <div class="form-grid">
-    <div class="form-group"><label>Tipo <span class="required">*</span></label>
-      <select id="m-tipo" onchange="onMTipo()">
-        <option value="entrada">Entrada</option>
-        <option value="salida">Salida</option>
-        <option value="traslado">Traslado</option>
-        <option value="observacion">Observación</option>
+  <div class="form-grid-2">
+    <div class="form-group"><label>N° de serie <span style="font-size:10px;color:var(--text3)">(opcional al reportar)</span></label>
+      <input id="f-serie" type="text" placeholder="Se puede agregar en la inspección">
+    </div>
+    <div class="form-group"><label>Prioridad</label>
+      <select id="f-prio"><option value="baja">Baja</option><option value="media" selected>Media</option><option value="alta">Alta</option><option value="critica">Crítica</option></select>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2: Cliente -->
+  <div class="form-section"><i class="ti ti-building-hospital"></i>Cliente</div>
+  <div class="form-grid-2">
+    <div class="form-group"><label>Institución / Cliente <span class="required">*</span></label>
+      <input id="f-cliente" type="text" placeholder="Nombre de la clínica, hospital...">
+    </div>
+    <div class="form-group"><label>Contacto del cliente</label>
+      <input id="f-contacto" type="text" placeholder="Nombre y teléfono de contacto">
+    </div>
+  </div>
+
+  <!-- SECCIÓN 3: Asesor -->
+  <div class="form-section"><i class="ti ti-user-check"></i>Asesor relacionado</div>
+  <div class="form-grid-2">
+    <div class="form-group"><label>Asesor <span class="required">*</span></label>
+      <select id="f-asesor" onchange="onAsesor()"><option value="">Seleccionar...</option></select>
+    </div>
+    <div class="form-group"><label>Correo del asesor</label>
+      <div class="auto-field"><i class="ti ti-mail" style="font-size:13px;color:var(--text3)"></i><span id="f-asesor-email">—</span></div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 4: Falla -->
+  <div class="form-section"><i class="ti ti-alert-circle"></i>Descripción de la falla</div>
+  <div class="form-group" style="margin-bottom:.7rem">
+    <label>Falla reportada <span class="required">*</span></label>
+    <textarea id="f-desc" placeholder="Describe el problema reportado por el cliente..."></textarea>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECCIÓN 5: Asignación (edición) -->
+  <div class="form-section"><i class="ti ti-tool"></i>Asignación y seguimiento</div>
+  <div class="form-grid-3">
+    <div class="form-group"><label>Técnico asignado</label>
+      <select id="f-tec" onchange="onTecnico()"><option value="">Sin asignar aún</option></select>
+    </div>
+    <div class="form-group"><label>Estado</label>
+      <select id="f-est" onchange="onEstado()">
+        <option value="reporte">Reporte</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="cita_coordinada">Cita coordinada</option>
+        <option value="en_revision">En revisión</option>
+        <option value="ayuda_asesor">Ayuda del asesor</option>
+        <option value="piezas_importacion">Piezas en importación</option>
+        <option value="cerrado">Cerrado</option>
       </select>
     </div>
-    <div class="form-group"><label>Producto <span class="required">*</span></label>
-      <select id="m-prod" onchange="onMProd()"><option value="">Seleccionar...</option></select>
-    </div>
-    <div class="form-group"><label>Cantidad</label><input id="m-cant" type="number" value="1" min="1"></div>
-    <div class="form-group"><label>Ubicación / Almacén</label><input id="m-ubic" type="text" placeholder="Ej: Almacén A, Rack 3"></div>
-    <div class="form-group"><label>Responsable <span class="required">*</span></label><input id="m-resp" type="text" placeholder="Tu nombre"></div>
-    <div class="form-group"><label>Fecha y hora de registro</label><div style="padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface2);font-size:13px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-lock" style="font-size:14px;color:var(--text3)"></i><span id="m-fecha-display">—</span><span style="font-size:11px;color:var(--text3);margin-left:auto">Automático</span></div></div>
-    <div class="form-group" id="m-doc-g"><label>N° documento / guía</label><input id="m-doc" type="text" placeholder="GR-2025-001"></div>
-    <div class="form-group" id="m-prov-g"><label id="m-prov-lbl">Proveedor</label><input id="m-prov" type="text" placeholder=""></div>
-  </div>
-  <div class="form-group" id="m-sn-g">
-    <label>Números de serie</label>
-    <div style="display:flex;gap:6px;margin-bottom:6px">
-      <input id="m-sn-inp" type="text" placeholder="Escribe el N° de serie y presiona Enter" style="flex:1" onkeydown="if(event.key==='Enter'){event.preventDefault();addSN()}">
-      <button class="btn btn-sm" onclick="addSN()"><i class="ti ti-plus"></i>Agregar</button>
-    </div>
-    <div id="m-sn-list" class="sn-list"></div>
-  </div>
-  <div class="form-group"><label>Observación / nota</label><textarea id="m-nota" placeholder="Detalles adicionales..."></textarea></div>
-  <div class="modal-footer">
-    <button class="btn" onclick="closeModal('modal-mov')">Cancelar</button>
-    <button class="btn btn-primary" onclick="saveMov()"><i class="ti ti-check"></i>Guardar movimiento</button>
-  </div>
-</div>
-</div>
-
-<!-- ══ MODAL: Ticket ══ -->
-<div id="modal-ticket" class="modal-backdrop">
-<div class="modal" style="width:780px">
-  <div class="modal-header">
-    <h3 id="tk-title">Nuevo ticket de soporte</h3>
-    <button class="btn btn-sm btn-icon" onclick="closeModal('modal-ticket')"><i class="ti ti-x"></i></button>
-  </div>
-
-  <!-- Sección 1: Datos del reporte -->
-  <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">📋 Datos del reporte</div>
-  <div class="form-grid">
-    <div class="form-group"><label>Producto / Equipo <span class="required">*</span></label><select id="tk-prod" onchange="onTkProd()"><option value="">Seleccionar...</option></select></div>
-    <div class="form-group"><label>N° de serie <span style="font-size:11px;color:var(--text3)">(opcional al reportar)</span></label>
-      <div style="display:flex;gap:6px">
-        <select id="tk-sn" style="flex:1"><option value="">Sin serie / agregar después</option></select>
-        <input type="text" id="tk-sn-manual" placeholder="O escribe aquí" style="flex:1;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px">
-      </div>
-    </div>
-    <div class="form-group"><label>Cliente <span class="required">*</span></label><input id="tk-cliente" type="text" placeholder="Nombre del cliente o institución"></div>
-    <div class="form-group"><label>Prioridad</label>
-      <select id="tk-prio"><option value="baja">Baja</option><option value="media" selected>Media</option><option value="alta">Alta</option><option value="critica">Crítica</option></select>
+    <div class="form-group"><label>Fecha apertura</label>
+      <div class="auto-field"><i class="ti ti-lock" style="font-size:13px;color:var(--text3)"></i><span id="f-apertura-lbl">—</span><span class="auto-tag">Auto</span></div>
     </div>
   </div>
-  <div class="form-group" style="margin-bottom:.75rem"><label>Descripción del problema / falla reportada <span class="required">*</span></label><textarea id="tk-desc" placeholder="Describe la falla reportada por el cliente..."></textarea></div>
-
-  <!-- Sección 2: Asesor -->
-  <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;margin-top:.5rem">👤 Asesor relacionado</div>
-  <div class="form-grid">
-    <div class="form-group"><label>Asesor <span class="required">*</span></label><select id="tk-asesor" onchange="onTkAsesor()"><option value="">Seleccionar asesor...</option></select></div>
-    <div class="form-group"><label>Correo del asesor</label><div style="padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface2);font-size:13px;color:var(--text2)" id="tk-asesor-email">—</div></div>
-  </div>
-
-  <!-- Sección 3: Asignación técnica (solo jefe o al editar) -->
-  <div id="tk-asign-section">
-    <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;margin-top:.5rem">🔧 Asignación técnica</div>
-    <div class="form-grid">
-      <div class="form-group"><label>Técnico asignado</label><select id="tk-tec"><option value="">Sin asignar aún</option></select></div>
-      <div class="form-group"><label>Estado</label>
-        <select id="tk-est" onchange="onTkEstado()">
-          <option value="reporte">Reporte</option>
-          <option value="pendiente">Pendiente</option>
-          <option value="cita_coordinada">Cita coordinada</option>
-          <option value="en_revision">En revisión</option>
-          <option value="piezas_importacion">Piezas en importación</option>
-          <option value="cerrado">Cerrado</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Fecha apertura</label><div style="padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface2);font-size:13px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-lock" style="font-size:13px;color:var(--text3)"></i><span id="tk-ap-display">—</span><span style="font-size:11px;color:var(--text3);margin-left:auto">Automático</span></div></div>
-      <div class="form-group" id="tk-ci-g" style="display:none"><label>Fecha cierre</label><div style="padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface2);font-size:13px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-lock" style="font-size:13px;color:var(--text3)"></i><span id="tk-ci-display">Al cerrar</span></div></div>
+  <div class="form-grid-2">
+    <div class="form-group"><label>Fecha asignación al técnico</label>
+      <div class="auto-field"><i class="ti ti-lock" style="font-size:13px;color:var(--text3)"></i><span id="f-asign-lbl">—</span><span class="auto-tag">Auto al asignar</span></div>
     </div>
-    <div class="form-group" id="tk-res-g" style="display:none;margin-bottom:.5rem"><label>Resolución / acción tomada</label><textarea id="tk-res" placeholder="Describe la solución aplicada..."></textarea></div>
-    <div class="form-group" id="tk-nota-tec-g"><label>Nota del técnico / avance</label><textarea id="tk-nota-tec" placeholder="Observaciones de la inspección, piezas requeridas, etc..." style="min-height:56px"></textarea></div>
+    <div class="form-group" id="f-cierre-g" style="display:none"><label>Fecha cierre</label>
+      <div class="auto-field"><i class="ti ti-lock" style="font-size:13px;color:var(--text3)"></i><span id="f-cierre-lbl">—</span><span class="auto-tag">Auto al cerrar</span></div>
+    </div>
+  </div>
+  <div class="form-group" style="margin-bottom:.7rem"><label>Nota técnica / avance</label>
+    <textarea id="f-nota" placeholder="Observaciones de la inspección, diagnóstico, piezas requeridas..." style="min-height:56px"></textarea>
+  </div>
+  <div class="form-group" id="f-resol-g" style="display:none"><label>Resolución / acción tomada</label>
+    <textarea id="f-resol" placeholder="Describe la solución aplicada..."></textarea>
   </div>
 
   <div class="modal-footer">
-    <button class="btn" onclick="closeModal('modal-ticket')">Cancelar</button>
-    <button class="btn btn-primary" onclick="saveTicket()"><i class="ti ti-check"></i>Guardar ticket</button>
+    <button class="btn" onclick="closeModal('modal-tk')">Cancelar</button>
+    <button class="btn btn-primary" onclick="saveTicket()"><i class="ti ti-check"></i>Guardar</button>
   </div>
 </div>
 </div>
 
 <script>
 // ══════════════════════════════════════════════
-// AUTENTICACIÓN GOOGLE OAUTH
+// ESTADOS
+// ══════════════════════════════════════════════
+const ESTADOS = {
+  reporte:            { label:'Reporte',               badge:'b-amber',  color:'var(--amber)' },
+  pendiente:          { label:'Pendiente',              badge:'b-amber',  color:'var(--amber)' },
+  cita_coordinada:    { label:'Cita coordinada',        badge:'b-blue',   color:'var(--blue)' },
+  en_revision:        { label:'En revisión',            badge:'b-blue',   color:'var(--blue)' },
+  ayuda_asesor:       { label:'Ayuda del asesor',       badge:'b-purple', color:'var(--purple)' },
+  piezas_importacion: { label:'Piezas en importación',  badge:'b-red',    color:'var(--red)' },
+  cerrado:            { label:'Cerrado',                badge:'b-gray',   color:'var(--gray-d)' }
+};
+
+// ══════════════════════════════════════════════
+// AUTH GOOGLE
 // ══════════════════════════════════════════════
 const ALLOWED_DOMAIN = 'olimpexperu.com';
 let currentUser = null;
 
 function handleGoogleLogin(response) {
-  const payload = parseJwt(response.credential);
-  const email = payload.email || '';
-  const domain = email.split('@')[1] || '';
-
-  if (domain !== ALLOWED_DOMAIN) {
-    document.getElementById('login-error').style.display = 'block';
-    return;
+  const p = parseJwt(response.credential);
+  if ((p.email||'').split('@')[1] !== ALLOWED_DOMAIN) {
+    document.getElementById('login-error').style.display = 'block'; return;
   }
-
-  // Login exitoso
-  currentUser = {
-    name: payload.name,
-    email: payload.email,
-    picture: payload.picture
-  };
-
-  // Guardar sesión
-  sessionStorage.setItem('olimpex_user', JSON.stringify(currentUser));
-
+  currentUser = { name: p.name, email: p.email, picture: p.picture };
+  sessionStorage.setItem('oc_user', JSON.stringify(currentUser));
   showApp();
 }
 
-function parseJwt(token) {
-  const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
-  return JSON.parse(atob(base64));
+function parseJwt(t) {
+  return JSON.parse(atob(t.split('.')[1].replace(/-/g,'+').replace(/_/g,'/')));
 }
 
 function showApp() {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('main-app').style.display = 'flex';
-
-  // Mostrar info del usuario en sidebar
   if (currentUser) {
-    document.getElementById('user-name').textContent = currentUser.name;
+    document.getElementById('user-name').textContent  = currentUser.name;
     document.getElementById('user-email').textContent = currentUser.email;
-    if (currentUser.picture) {
-      const av = document.getElementById('user-avatar');
-      av.src = currentUser.picture;
-      av.style.display = 'block';
-    }
+    if (currentUser.picture) { const av=document.getElementById('user-avatar'); av.src=currentUser.picture; av.style.display='block'; }
   }
-
-  // Cargar datos
-  if (SCRIPT_URL) loadData();
-  else { hideLoading(); nav('config'); }
+  if (SCRIPT_URL) loadData(); else { hideLoading(); nav('config'); }
 }
 
 function logout() {
-  sessionStorage.removeItem('olimpex_user');
-  currentUser = null;
+  sessionStorage.removeItem('oc_user'); currentUser = null;
   document.getElementById('main-app').style.display = 'none';
   document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('login-error').style.display = 'none';
-  // Revocar token de Google
   if (window.google) google.accounts.id.disableAutoSelect();
 }
 
-// Verificar sesión existente al cargar
 function checkSession() {
-  const saved = sessionStorage.getItem('olimpex_user');
-  if (saved) {
-    try {
-      currentUser = JSON.parse(saved);
-      showApp();
-      return;
-    } catch(e) {}
-  }
-  // No hay sesión — mostrar login
+  const s = sessionStorage.getItem('oc_user');
+  if (s) { try { currentUser = JSON.parse(s); showApp(); return; } catch(e){} }
   hideLoading();
 }
 
 // ══════════════════════════════════════════════
-// CONFIGURACIÓN
+// CONFIG & DB
 // ══════════════════════════════════════════════
-let SCRIPT_URL = localStorage.getItem('olimpex_script_url') || '';
+let SCRIPT_URL = localStorage.getItem('oc_script_url') || '';
+let cfg = JSON.parse(localStorage.getItem('oc_cfg') || '{"marcas":[],"tecnicos":[],"asesores":[]}');
+let db  = { tickets: [] };
+let editingId = null;
 
-// Configuración local (marcas, técnicos, asesores)
-let cfg = JSON.parse(localStorage.getItem('olimpex_cfg') || '{"marcas":[],"tecnicos":[],"asesores":[]}');
+function saveCfg() { localStorage.setItem('oc_cfg', JSON.stringify(cfg)); }
 
-// DB en memoria
-let db = { productos: [], movimientos: [], tickets: [] };
-let editingProdId = null;
-let editingTicketId = null;
-let movSNs = [];
-
-function saveCfg() { localStorage.setItem('olimpex_cfg', JSON.stringify(cfg)); }
-
-// ── Marcas ──────────────────────────────────────
-function addMarca() {
-  const v = document.getElementById('cfg-marca-inp').value.trim();
-  if (!v) return;
-  if (!cfg.marcas.includes(v)) { cfg.marcas.push(v); saveCfg(); }
-  document.getElementById('cfg-marca-inp').value = '';
-  renderCfgMarcas();
-}
-function removeMarca(m) { cfg.marcas = cfg.marcas.filter(x=>x!==m); saveCfg(); renderCfgMarcas(); }
-function renderCfgMarcas() {
-  document.getElementById('cfg-marcas-list').innerHTML = cfg.marcas.map(m =>
-    `<span class="sn-chip">${m}<span class="sn-rm" onclick="removeMarca('${m}')"><i class="ti ti-x" style="font-size:11px"></i></span></span>`
-  ).join('') || '<span style="font-size:12px;color:var(--text3)">Sin marcas agregadas</span>';
-}
-
-// ── Técnicos ────────────────────────────────────
-function addTecnico() {
-  const nom   = document.getElementById('cfg-tec-nom').value.trim();
-  const email = document.getElementById('cfg-tec-email').value.trim();
-  const rol   = document.getElementById('cfg-tec-rol').value;
-  if (!nom || !email) { toast('Nombre y correo son obligatorios', 'error'); return; }
-  if (!cfg.tecnicos.find(t=>t.email===email)) {
-    cfg.tecnicos.push({ nombre: nom, email, rol });
-    saveCfg();
-  }
-  document.getElementById('cfg-tec-nom').value = '';
-  document.getElementById('cfg-tec-email').value = '';
-  renderCfgTecnicos();
-}
-function removeTecnico(email) { cfg.tecnicos = cfg.tecnicos.filter(t=>t.email!==email); saveCfg(); renderCfgTecnicos(); }
-function renderCfgTecnicos() {
-  const el = document.getElementById('cfg-tecnicos-list');
-  el.innerHTML = cfg.tecnicos.length
-    ? cfg.tecnicos.map(t => `<div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)">
-        <div><span style="font-size:13px;font-weight:500">${t.nombre}</span> <span class="badge ${t.rol==='jefe'?'b-alta':'b-progress'}" style="margin-left:4px">${t.rol}</span><div style="font-size:11px;color:var(--text3)">${t.email}</div></div>
-        <button class="btn btn-sm btn-icon" onclick="removeTecnico('${t.email}')"><i class="ti ti-trash" style="color:var(--red)"></i></button>
-      </div>`).join('')
-    : '<p style="font-size:12px;color:var(--text3)">Sin técnicos agregados</p>';
-}
-
-// ── Asesores ────────────────────────────────────
-function addAsesor() {
-  const nom   = document.getElementById('cfg-as-nom').value.trim();
-  const email = document.getElementById('cfg-as-email').value.trim();
-  if (!nom || !email) { toast('Nombre y correo son obligatorios', 'error'); return; }
-  if (!cfg.asesores.find(a=>a.email===email)) {
-    cfg.asesores.push({ nombre: nom, email });
-    saveCfg();
-  }
-  document.getElementById('cfg-as-nom').value = '';
-  document.getElementById('cfg-as-email').value = '';
-  renderCfgAsesores();
-}
-function removeAsesor(email) { cfg.asesores = cfg.asesores.filter(a=>a.email!==email); saveCfg(); renderCfgAsesores(); }
-function renderCfgAsesores() {
-  const el = document.getElementById('cfg-asesores-list');
-  el.innerHTML = cfg.asesores.length
-    ? `<table style="width:100%;font-size:13px;border-collapse:collapse">
-        <thead><tr><th style="text-align:left;padding:6px 8px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text2)">Nombre</th><th style="text-align:left;padding:6px 8px;border-bottom:1px solid var(--border);font-weight:500;color:var(--text2)">Correo</th><th></th></tr></thead>
-        <tbody>${cfg.asesores.map(a=>`<tr><td style="padding:7px 8px">${a.nombre}</td><td style="padding:7px 8px;color:var(--text2)">${a.email}</td><td><button class="btn btn-sm btn-icon" onclick="removeAsesor('${a.email}')"><i class="ti ti-trash" style="color:var(--red)"></i></button></td></tr>`).join('')}</tbody>
-      </table>`
-    : '<p style="font-size:12px;color:var(--text3)">Sin asesores agregados</p>';
-}
-
-// ── Config URL ──────────────────────────────────
 function saveConfig() {
   const url = document.getElementById('cfg-url').value.trim();
-  if (!url.startsWith('https://script.google.com')) {
-    toast('URL inválida. Debe ser una URL de Apps Script.', 'error'); return;
-  }
-  localStorage.setItem('olimpex_script_url', url);
-  SCRIPT_URL = url;
-  toast('URL guardada. Cargando datos...', 'success');
-  loadData();
+  if (!url.startsWith('https://script.google.com')) { toast('URL inválida','error'); return; }
+  localStorage.setItem('oc_script_url', url); SCRIPT_URL = url;
+  toast('URL guardada', 'success'); loadData();
 }
 
-// ── API calls ───────────────────────────────────
-async function api(action, body = null) {
-  if (!SCRIPT_URL) { nav('config'); return null; }
-  const url = SCRIPT_URL + '?action=' + action;
-  const opts = body
-    ? { method: 'POST', body: JSON.stringify(body) }
-    : { method: 'GET' };
-  const res = await fetch(url, opts);
+// ── Técnicos ──
+function addTec() {
+  const n=document.getElementById('cfg-tec-n').value.trim();
+  const e=document.getElementById('cfg-tec-e').value.trim();
+  const r=document.getElementById('cfg-tec-r').value;
+  if (!n||!e){toast('Nombre y correo requeridos','error');return;}
+  if (!cfg.tecnicos.find(t=>t.email===e)) { cfg.tecnicos.push({nombre:n,email:e,rol:r}); saveCfg(); }
+  document.getElementById('cfg-tec-n').value=''; document.getElementById('cfg-tec-e').value='';
+  renderCfgTec();
+}
+function delTec(e){cfg.tecnicos=cfg.tecnicos.filter(t=>t.email!==e);saveCfg();renderCfgTec();}
+function renderCfgTec(){
+  document.getElementById('cfg-tec-list').innerHTML=cfg.tecnicos.length
+    ?cfg.tecnicos.map(t=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)">
+      <div><span style="font-weight:500">${t.nombre}</span> <span class="badge ${t.rol==='jefe'?'b-red':'b-blue'}" style="margin-left:4px">${t.rol}</span><div style="font-size:11px;color:var(--text3)">${t.email}</div></div>
+      <button class="btn btn-sm btn-icon" onclick="delTec('${t.email}')"><i class="ti ti-trash" style="color:var(--red)"></i></button>
+    </div>`).join('')
+    :'<p style="font-size:12px;color:var(--text3)">Sin técnicos</p>';
+}
+
+// ── Asesores ──
+function addAs(){
+  const n=document.getElementById('cfg-as-n').value.trim();
+  const e=document.getElementById('cfg-as-e').value.trim();
+  if(!n||!e){toast('Nombre y correo requeridos','error');return;}
+  if(!cfg.asesores.find(a=>a.email===e)){cfg.asesores.push({nombre:n,email:e});saveCfg();}
+  document.getElementById('cfg-as-n').value=''; document.getElementById('cfg-as-e').value='';
+  renderCfgAs();
+}
+function delAs(e){cfg.asesores=cfg.asesores.filter(a=>a.email!==e);saveCfg();renderCfgAs();}
+function renderCfgAs(){
+  document.getElementById('cfg-as-list').innerHTML=cfg.asesores.length
+    ?cfg.asesores.map(a=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border)">
+      <div><span style="font-weight:500">${a.nombre}</span><div style="font-size:11px;color:var(--text3)">${a.email}</div></div>
+      <button class="btn btn-sm btn-icon" onclick="delAs('${a.email}')"><i class="ti ti-trash" style="color:var(--red)"></i></button>
+    </div>`).join('')
+    :'<p style="font-size:12px;color:var(--text3)">Sin asesores</p>';
+}
+
+// ── Marcas ──
+function addMarca(){
+  const v=document.getElementById('cfg-marca-n').value.trim();
+  if(!v)return;
+  if(!cfg.marcas.includes(v)){cfg.marcas.push(v);saveCfg();}
+  document.getElementById('cfg-marca-n').value=''; renderCfgMarcas();
+}
+function delMarca(m){cfg.marcas=cfg.marcas.filter(x=>x!==m);saveCfg();renderCfgMarcas();}
+function renderCfgMarcas(){
+  document.getElementById('cfg-marca-list').innerHTML=cfg.marcas.map(m=>
+    `<span style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:12px;display:inline-flex;align-items:center;gap:5px">${m}<span onclick="delMarca('${m}')" style="cursor:pointer;color:var(--text3);font-size:11px">✕</span></span>`
+  ).join('')||'<span style="font-size:12px;color:var(--text3)">Sin marcas</span>';
+}
+
+// ══════════════════════════════════════════════
+// API
+// ══════════════════════════════════════════════
+async function api(action, body=null) {
+  if (!SCRIPT_URL){nav('config');return null;}
+  const res = await fetch(SCRIPT_URL+'?action='+action, body?{method:'POST',body:JSON.stringify(body)}:{method:'GET'});
   const data = await res.json();
   if (data.error) throw new Error(data.error);
   return data;
 }
 
 async function loadData() {
-  if (!SCRIPT_URL) { hideLoading(); return; }
+  if (!SCRIPT_URL){hideLoading();return;}
   showLoading();
   try {
     const data = await api('getAll');
     if (!data) return;
-    db.productos   = data.productos   || [];
-    db.movimientos = (data.movimientos || []).map(m => ({
-      ...m, series: parseArr(m.series)
-    }));
     db.tickets = data.tickets || [];
     updateBadge();
-    const syncEl = document.getElementById('sync-time');
-    syncEl.textContent = 'Sync: ' + new Date().toLocaleTimeString('es-PE', {hour:'2-digit',minute:'2-digit'});
+    document.getElementById('sync-time').textContent = 'Sync: '+new Date().toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit'});
     renderCurrentPage();
-  } catch(e) {
-    toast('Error al cargar datos: ' + e.message, 'error');
-  }
+  } catch(e){ toast('Error al cargar: '+e.message,'error'); }
   hideLoading();
 }
 
-function parseArr(v) {
-  if (Array.isArray(v)) return v;
-  if (typeof v === 'string' && v.startsWith('[')) { try { return JSON.parse(v); } catch(e) {} }
-  return [];
-}
-
-// ── Navegación ──────────────────────────────────
+// ══════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════
 function nav(p) {
-  document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(x => x.classList.remove('active'));
-  document.getElementById('page-' + p).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(x => {
-    if (x.getAttribute('onclick') && x.getAttribute('onclick').includes("'" + p + "'"))
-      x.classList.add('active');
-  });
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(x=>{if(x.getAttribute('onclick')&&x.getAttribute('onclick').includes("'"+p+"'"))x.classList.add('active');});
   renderCurrentPage();
 }
 
 function renderCurrentPage() {
-  const active = document.querySelector('.page.active');
-  if (!active) return;
-  const id = active.id.replace('page-', '');
-  if (id === 'dashboard')    renderDashboard();
-  if (id === 'inventario')   renderInventario();
-  if (id === 'movimientos')  renderMovimientos();
-  if (id === 'soporte')      renderSoporte();
-  if (id === 'trazabilidad') { populateTrazSelect(); renderTraz(); }
-  if (id === 'catalogo')     renderCatalogo();
-  if (id === 'config') {
-    const el = document.getElementById('cfg-url');
-    if (SCRIPT_URL) el.value = SCRIPT_URL;
-    renderCfgMarcas(); renderCfgTecnicos(); renderCfgAsesores();
-  }
-}
-
-// ── Modales ─────────────────────────────────────
-function openModal(id) {
-  if (id === 'modal-mov') {
-    movSNs = [];
-    renderSNList();
-    const now = new Date(); now.setSeconds(0, 0);
-    // Fecha automática — solo mostrar, no editable
-    document.getElementById('m-fecha-display').textContent = fmtDateNow(now);
-    populateSelect('m-prod', db.productos, 'codigo', p => p.nombre + ' (' + p.codigo + ')');
-    document.getElementById('m-nota').value = '';
-    document.getElementById('m-doc').value = '';
-    document.getElementById('m-prov').value = '';
-    document.getElementById('m-ubic').value = '';
-    document.getElementById('m-resp').value = currentUser ? currentUser.name : '';
-    document.getElementById('m-cant').value = '1';
-    onMTipo();
-  }
-  if (id === 'modal-prod') {
-    if (!editingProdId) {
-      ['p-codigo','p-nombre','p-cat','p-marca','p-modelo','p-desc'].forEach(f => document.getElementById(f).value = '');
-      document.getElementById('p-smin').value = '1';
-      document.getElementById('p-sla').value = '48';
-      document.getElementById('p-sn').value = 'si';
-      document.getElementById('prod-title').textContent = 'Agregar producto al catálogo';
-    }
-  }
-  if (id === 'modal-ticket') {
-    if (!editingTicketId) {
-      editingTicketId = null;
-      document.getElementById('tk-title').textContent = 'Nuevo ticket de soporte';
-      const now = new Date(); now.setSeconds(0,0);
-      document.getElementById('tk-ap-display').textContent = fmtDateNow(now);
-      document.getElementById('tk-ci-display').textContent = 'Al cerrar';
-      ['tk-desc','tk-res','tk-nota-tec','tk-cliente','tk-sn-manual'].forEach(f => document.getElementById(f).value = '');
-      document.getElementById('tk-ci-g').style.display = 'none';
-      document.getElementById('tk-res-g').style.display = 'none';
-      document.getElementById('tk-prio').value = 'media';
-      document.getElementById('tk-est').value = 'reporte';
-      populateSelect('tk-prod', db.productos, 'codigo', p => p.nombre + ' (' + p.codigo + ')');
-      document.getElementById('tk-sn').innerHTML = '<option value="">Sin serie / agregar después</option>';
-      // Poblar técnicos y asesores desde config
-      const tecSel = document.getElementById('tk-tec');
-      tecSel.innerHTML = '<option value="">Sin asignar aún</option>';
-      cfg.tecnicos.forEach(t => { const o=document.createElement('option'); o.value=t.nombre+'|'+t.email; o.textContent=t.nombre+(t.rol==='jefe'?' ★':''); tecSel.appendChild(o); });
-      const asSel = document.getElementById('tk-asesor');
-      asSel.innerHTML = '<option value="">Seleccionar asesor...</option>';
-      cfg.asesores.forEach(a => { const o=document.createElement('option'); o.value=a.nombre+'|'+a.email; o.textContent=a.nombre; asSel.appendChild(o); });
-      document.getElementById('tk-asesor-email').textContent = '—';
-    }
-  }
-  document.getElementById(id).classList.add('open');
-}
-
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-  if (id === 'modal-prod') editingProdId = null;
-  if (id === 'modal-ticket') editingTicketId = null;
-}
-
-// ── Helpers ─────────────────────────────────────
-function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
-
-function fmtDateNow(d) {
-  return d.toLocaleDateString('es-PE', { day: '2-digit', month: '2-digit', year: '2-digit' })
-    + ' ' + d.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-}
-
-function fmtDate(s) {
-  if (!s) return '—';
-  const d = new Date(s);
-  return d.toLocaleDateString('es-PE', { day: '2-digit', month: '2-digit', year: '2-digit' })
-    + ' ' + d.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' });
-}
-
-function calcHrs(a, b) {
-  if (!a) return null;
-  const fin = b ? new Date(b) : new Date();
-  return Math.round((fin - new Date(a)) / 360000) / 10;
-}
-
-function fmtHrs(h) {
-  if (h === null) return '—';
-  if (h < 24) return h.toFixed(1) + ' hrs';
-  return (h / 24).toFixed(1) + ' días';
-}
-
-function populateSelect(id, arr, valF, labelFn) {
-  const el = document.getElementById(id);
-  el.innerHTML = '<option value="">Seleccionar...</option>';
-  arr.forEach(x => { const o = document.createElement('option'); o.value = x[valF]; o.textContent = labelFn(x); el.appendChild(o); });
-}
-
-function getStock(codigo) {
-  let s = 0;
-  db.movimientos.filter(m => m.codigo === codigo).forEach(m => {
-    if (m.tipo === 'entrada') s += Number(m.cantidad) || 0;
-    else if (m.tipo === 'salida') s -= Number(m.cantidad) || 0;
-  });
-  return Math.max(0, s);
-}
-
-function getSNEnStock(codigo) {
-  const s = new Set();
-  db.movimientos.filter(m => m.codigo === codigo).forEach(m => {
-    const sns = Array.isArray(m.series) ? m.series : [];
-    if (m.tipo === 'entrada') sns.forEach(x => s.add(x));
-    if (m.tipo === 'salida')  sns.forEach(x => s.delete(x));
-  });
-  return [...s];
-}
-
-function slaBadge(tk) {
-  const h = calcHrs(tk.apertura, tk.estado === 'cerrado' ? tk.cierre : null);
-  const sla = Number(tk.slaHrs) || 48;
-  let cls, txt;
-  if (h === null || tk.estado !== 'cerrado' && h <= sla * 0.75) { cls = 'b-ok'; txt = 'Dentro SLA'; }
-  else if (tk.estado !== 'cerrado' && h <= sla) { cls = 'b-pending'; txt = 'Próx. a vencer'; }
-  else if (h > sla) { cls = 'b-delay'; txt = 'SLA vencido'; }
-  else { cls = 'b-ok'; txt = 'Cumplido'; }
-  return `<span class="badge ${cls}">${txt}</span>`;
-}
-
-function updateBadge() {
-  const open = db.tickets.filter(t => t.estado !== 'cerrado').length;
-  const el = document.getElementById('badge-tickets');
-  el.textContent = open || '';
-  el.style.display = open ? '' : 'none';
-}
-
-function showLoading() { document.getElementById('loading').style.display = 'flex'; }
-function hideLoading() { document.getElementById('loading').style.display = 'none'; }
-
-function toast(msg, type = '') {
-  const w = document.getElementById('toasts');
-  const t = document.createElement('div');
-  t.className = 'toast ' + type;
-  t.innerHTML = `<i class="ti ti-${type==='success'?'check':type==='error'?'alert-circle':'info-circle'}"></i>${msg}`;
-  w.appendChild(t);
-  setTimeout(() => t.remove(), 3500);
-}
-
-// ── N° de serie ─────────────────────────────────
-function addSN() {
-  const inp = document.getElementById('m-sn-inp');
-  const v = inp.value.trim().toUpperCase();
-  if (!v) return;
-  if (!movSNs.includes(v)) { movSNs.push(v); renderSNList(); }
-  inp.value = ''; inp.focus();
-}
-function removeSN(s) { movSNs = movSNs.filter(x => x !== s); renderSNList(); }
-function renderSNList() {
-  document.getElementById('m-sn-list').innerHTML = movSNs.map(s =>
-    `<span class="sn-chip">${s}<span class="sn-rm" onclick="removeSN('${s}')"><i class="ti ti-x" style="font-size:11px"></i></span></span>`
-  ).join('');
-}
-
-function onMTipo() {
-  const t = document.getElementById('m-tipo').value;
-  document.getElementById('m-prov-g').style.display = (t === 'entrada' || t === 'salida') ? '' : 'none';
-  const lbl = document.getElementById('m-prov-lbl');
-  if (lbl) lbl.textContent = t === 'entrada' ? 'Proveedor' : 'Destinatario';
-}
-
-function onMProd() {
-  const codigo = document.getElementById('m-prod').value;
-  const prod = db.productos.find(p => p.codigo === codigo);
-  document.getElementById('m-sn-g').style.display = (prod && prod.tieneSN === 'si') ? '' : 'none';
-}
-
-function onTkProd() {
-  const codigo = document.getElementById('tk-prod').value;
-  const sns = getSNEnStock(codigo);
-  const sel = document.getElementById('tk-sn');
-  sel.innerHTML = '<option value="">Sin serie / agregar después</option>';
-  sns.forEach(s => { const o=document.createElement('option'); o.value=s; o.textContent=s; sel.appendChild(o); });
-}
-
-function onTkAsesor() {
-  const val = document.getElementById('tk-asesor').value;
-  const email = val.includes('|') ? val.split('|')[1] : '—';
-  document.getElementById('tk-asesor-email').textContent = email || '—';
-}
-
-function onTkEstado() {
-  const est = document.getElementById('tk-est').value;
-  document.getElementById('tk-ci-g').style.display  = est === 'cerrado' ? '' : 'none';
-  document.getElementById('tk-res-g').style.display = est === 'cerrado' ? '' : 'none';
-}
-
-function abrirNuevoTicket() {
-  editingTicketId = null;
-  openModal('modal-ticket');
+  const id = (document.querySelector('.page.active')||{}).id||'';
+  const p  = id.replace('page-','');
+  if (p==='dashboard') renderDashboard();
+  if (p==='tickets')   renderTickets();
+  if (p==='reportes')  renderReportes();
+  if (p==='config')    { renderCfgTec(); renderCfgAs(); renderCfgMarcas(); if(SCRIPT_URL)document.getElementById('cfg-url').value=SCRIPT_URL; }
 }
 
 // ══════════════════════════════════════════════
-// SAVE FUNCIONES
+// HELPERS
 // ══════════════════════════════════════════════
-async function saveProd() {
-  const codigo = document.getElementById('p-codigo').value.trim().toUpperCase();
-  const nombre = document.getElementById('p-nombre').value.trim();
-  const cat    = document.getElementById('p-cat').value.trim();
-  if (!codigo || !nombre || !cat) { toast('Código, nombre y categoría son obligatorios', 'error'); return; }
-  if (!editingProdId && db.productos.find(p => p.codigo === codigo)) { toast('Ya existe un producto con ese código', 'error'); return; }
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
 
-  const prod = {
-    id: editingProdId || uid(), codigo, nombre,
-    categoria: cat,
-    marca:  document.getElementById('p-marca').value.trim(),
-    modelo: document.getElementById('p-modelo').value.trim(),
-    stockMin: Number(document.getElementById('p-smin').value) || 1,
-    slaHrs:   Number(document.getElementById('p-sla').value) || 48,
-    tieneSN:  document.getElementById('p-sn').value,
-    desc:     document.getElementById('p-desc').value.trim(),
-    creadoEn: editingProdId ? (db.productos.find(p=>p.id===editingProdId)||{}).creadoEn : new Date().toISOString()
-  };
-
-  showLoading();
-  try {
-    await api(editingProdId ? 'updateProducto' : 'saveProducto', prod);
-    if (editingProdId) { const i = db.productos.findIndex(p=>p.id===editingProdId); db.productos[i] = prod; }
-    else db.productos.push(prod);
-    toast('Producto guardado', 'success');
-    closeModal('modal-prod');
-    renderCatalogo(); renderInventario();
-  } catch(e) { toast('Error: ' + e.message, 'error'); }
-  hideLoading();
+function fmtDate(s){
+  if(!s)return'—';
+  const d=new Date(s);
+  return d.toLocaleDateString('es-PE',{day:'2-digit',month:'2-digit',year:'2-digit'})+' '+d.toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit'});
+}
+function fmtDateNow(d){
+  return d.toLocaleDateString('es-PE',{day:'2-digit',month:'2-digit',year:'2-digit'})+' '+d.toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+}
+function calcHrs(a,b){
+  if(!a)return null;
+  return Math.round((( b?new Date(b):new Date())-new Date(a))/360000)/10;
+}
+function fmtHrs(h){
+  if(h===null||h===undefined)return'—';
+  if(h<1)return Math.round(h*60)+'min';
+  if(h<24)return h.toFixed(1)+' hrs';
+  return (h/24).toFixed(1)+' días';
+}
+function timeChip(h,sla){
+  if(h===null)return'<span style="color:var(--text3);font-size:12px">—</span>';
+  const cls=h>sla?'over':h>sla*0.75?'warn':'';
+  return`<span class="time-chip ${cls}">${fmtHrs(h)}</span>`;
+}
+function slaBadge(tk){
+  const h=calcHrs(tk.apertura,tk.estado==='cerrado'?tk.cierre:null);
+  const sla=Number(tk.slaHrs)||48;
+  if(h===null)return'<span class="badge b-gray">—</span>';
+  if(tk.estado==='cerrado'){return h<=sla?'<span class="badge b-green">✓ Cumplido</span>':'<span class="badge b-red">✗ Vencido</span>';}
+  if(h>sla)return'<span class="badge b-red">SLA vencido</span>';
+  if(h>sla*0.75)return'<span class="badge b-amber">Próx. a vencer</span>';
+  return'<span class="badge b-green">Dentro SLA</span>';
 }
 
-async function saveMov() {
-  const codigo = document.getElementById('m-prod').value;
-  const resp   = document.getElementById('m-resp').value.trim();
-  const tipo   = document.getElementById('m-tipo').value;
-  if (!codigo || !resp) { toast('Producto y responsable son obligatorios', 'error'); return; }
-
-  const cant = Number(document.getElementById('m-cant').value) || 1;
-  if (tipo === 'salida') {
-    const stock = getStock(codigo);
-    if (cant > stock) { toast(`Stock insuficiente. Disponible: ${stock} unidades`, 'error'); return; }
-  }
-  const prod = db.productos.find(p => p.codigo === codigo);
-  const ahora = new Date().toISOString(); // Fecha/hora exacta del servidor del cliente — no editable
-  const mov = {
-    id: uid(), codigo, tipo, cantidad: cant,
-    nombreProd:  prod ? prod.nombre : '',
-    ubicacion:   document.getElementById('m-ubic').value.trim(),
-    responsable: resp,
-    usuarioEmail: currentUser ? currentUser.email : '',
-    fecha:       ahora,
-    documento:   document.getElementById('m-doc').value.trim(),
-    proveedor:   document.getElementById('m-prov').value.trim(),
-    series:      [...movSNs],
-    nota:        document.getElementById('m-nota').value.trim()
-  };
-
-  showLoading();
-  try {
-    await api('saveMovimiento', mov);
-    db.movimientos.unshift(mov);
-    toast('Movimiento registrado', 'success');
-    closeModal('modal-mov');
-    renderInventario(); renderMovimientos(); renderDashboard();
-  } catch(e) { toast('Error: ' + e.message, 'error'); }
-  hideLoading();
+function updateBadge(){
+  const n=db.tickets.filter(t=>t.estado!=='cerrado').length;
+  const el=document.getElementById('badge-open');
+  el.textContent=n; el.style.display=n?'':'none';
 }
 
-async function saveTicket() {
-  const codigo  = document.getElementById('tk-prod').value;
-  const desc    = document.getElementById('tk-desc').value.trim();
-  const cliente = document.getElementById('tk-cliente').value.trim();
-  const asesorVal = document.getElementById('tk-asesor').value;
-  if (!codigo || !desc || !cliente) { toast('Producto, cliente y descripción son obligatorios', 'error'); return; }
+function showLoading(){document.getElementById('loading').style.display='flex';}
+function hideLoading(){document.getElementById('loading').style.display='none';}
+function toast(msg,type=''){
+  const w=document.getElementById('toasts');
+  const t=document.createElement('div'); t.className='toast '+type;
+  t.innerHTML=`<i class="ti ti-${type==='success'?'check':type==='error'?'alert-circle':'info-circle'}"></i>${msg}`;
+  w.appendChild(t); setTimeout(()=>t.remove(),3500);
+}
 
-  const prod = db.productos.find(p => p.codigo === codigo);
-  const estado = document.getElementById('tk-est').value || 'reporte';
-  const existingTk = editingTicketId ? db.tickets.find(t=>t.id===editingTicketId) : null;
-  const estadoAnterior = existingTk ? existingTk.estado : null;
+// ══════════════════════════════════════════════
+// MODAL
+// ══════════════════════════════════════════════
+function abrirNuevo(){
+  editingId=null;
+  document.getElementById('modal-tk-title').textContent='Nuevo ticket de soporte';
+  // Limpiar
+  ['f-prod','f-marca','f-area','f-serie','f-cliente','f-contacto','f-desc','f-nota','f-resol'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-prio').value='media';
+  document.getElementById('f-est').value='reporte';
+  document.getElementById('f-apertura-lbl').textContent=fmtDateNow(new Date());
+  document.getElementById('f-asign-lbl').textContent='—';
+  document.getElementById('f-cierre-lbl').textContent='—';
+  document.getElementById('f-cierre-g').style.display='none';
+  document.getElementById('f-resol-g').style.display='none';
+  // Poblar selects
+  poblarTecnicos(); poblarAsesores();
+  // Datalists
+  const dl=document.getElementById('list-marcas'); dl.innerHTML='';
+  cfg.marcas.forEach(m=>{const o=document.createElement('option');o.value=m;dl.appendChild(o);});
+  openModal('modal-tk');
+}
 
-  // Serie: del select o del campo manual
-  const snSelect = document.getElementById('tk-sn').value;
-  const snManual = document.getElementById('tk-sn-manual').value.trim().toUpperCase();
-  const serie = snManual || snSelect || '';
+function poblarTecnicos(){
+  const s=document.getElementById('f-tec'); s.innerHTML='<option value="">Sin asignar aún</option>';
+  cfg.tecnicos.forEach(t=>{const o=document.createElement('option');o.value=t.nombre+'|'+t.email;o.textContent=t.nombre+(t.rol==='jefe'?' ★':'');s.appendChild(o);});
+}
+function poblarAsesores(){
+  const s=document.getElementById('f-asesor'); s.innerHTML='<option value="">Seleccionar...</option>';
+  cfg.asesores.forEach(a=>{const o=document.createElement('option');o.value=a.nombre+'|'+a.email;o.textContent=a.nombre;s.appendChild(o);});
+  document.getElementById('f-asesor-email').textContent='—';
+}
 
-  // Técnico
-  const tecVal = document.getElementById('tk-tec').value;
-  const tecNombre = tecVal.includes('|') ? tecVal.split('|')[0] : tecVal;
-  const tecEmail  = tecVal.includes('|') ? tecVal.split('|')[1] : '';
+function onAsesor(){
+  const v=document.getElementById('f-asesor').value;
+  document.getElementById('f-asesor-email').textContent=v.includes('|')?v.split('|')[1]:'—';
+}
+function onTecnico(){
+  // se registrará la fecha de asignación al guardar si antes no tenía técnico
+}
+function onEstado(){
+  const est=document.getElementById('f-est').value;
+  document.getElementById('f-cierre-g').style.display=est==='cerrado'?'':'none';
+  document.getElementById('f-resol-g').style.display=est==='cerrado'?'':'none';
+}
 
-  // Asesor
-  const asesorNombre = asesorVal.includes('|') ? asesorVal.split('|')[0] : '';
-  const asesorEmail  = asesorVal.includes('|') ? asesorVal.split('|')[1] : '';
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');editingId=null;}
 
-  const apertura = existingTk ? existingTk.apertura : new Date().toISOString();
-  let cierre = existingTk ? (existingTk.cierre || null) : null;
-  if (estado === 'cerrado' && !cierre) cierre = new Date().toISOString();
+// ══════════════════════════════════════════════
+// SAVE TICKET
+// ══════════════════════════════════════════════
+async function saveTicket(){
+  const prod    = document.getElementById('f-prod').value.trim();
+  const cliente = document.getElementById('f-cliente').value.trim();
+  const desc    = document.getElementById('f-desc').value.trim();
+  const asesorV = document.getElementById('f-asesor').value;
+  if(!prod||!cliente||!desc){toast('Producto, cliente y descripción son obligatorios','error');return;}
+
+  const estado  = document.getElementById('f-est').value;
+  const tecV    = document.getElementById('f-tec').value;
+  const tecNom  = tecV.includes('|')?tecV.split('|')[0]:tecV;
+  const tecEmail= tecV.includes('|')?tecV.split('|')[1]:'';
+  const asNom   = asesorV.includes('|')?asesorV.split('|')[0]:'';
+  const asEmail = asesorV.includes('|')?asesorV.split('|')[1]:'';
+
+  const existing = editingId ? db.tickets.find(t=>t.id===editingId) : null;
+  const estadoAnt= existing ? existing.estado : null;
+
+  const apertura = existing ? existing.apertura : new Date().toISOString();
+
+  // Fecha de asignación: se registra la primera vez que se asigna un técnico
+  let fechaAsignacion = existing ? (existing.fechaAsignacion||null) : null;
+  if (tecNom && !fechaAsignacion) fechaAsignacion = new Date().toISOString();
+
+  let cierre = existing ? (existing.cierre||null) : null;
+  if (estado==='cerrado' && !cierre) cierre = new Date().toISOString();
 
   const tk = {
-    id:           editingTicketId || uid(),
-    ticketNum:    existingTk ? existingTk.ticketNum : 'TK-' + String(db.tickets.length + 1).padStart(4, '0'),
-    codigo,
-    nombreProd:   prod ? prod.nombre : '',
+    id:              editingId || uid(),
+    ticketNum:       existing ? existing.ticketNum : 'TK-'+String(db.tickets.length+1).padStart(4,'0'),
+    producto:        prod,
+    marca:           document.getElementById('f-marca').value.trim(),
+    area:            document.getElementById('f-area').value.trim(),
+    serie:           document.getElementById('f-serie').value.trim().toUpperCase(),
     cliente,
-    serie,
-    tecnico:      tecNombre,
-    tecnicoEmail: tecEmail,
-    asesor:       asesorNombre,
-    asesorEmail,
-    registradoPor: currentUser ? currentUser.name : '',
-    usuarioEmail:  currentUser ? currentUser.email : '',
-    prioridad:    document.getElementById('tk-prio').value,
+    contacto:        document.getElementById('f-contacto').value.trim(),
+    asesor:          asNom,
+    asesorEmail:     asEmail,
+    tecnico:         tecNom,
+    tecnicoEmail:    tecEmail,
+    registradoPor:   currentUser?currentUser.name:'',
+    usuarioEmail:    currentUser?currentUser.email:'',
+    prioridad:       document.getElementById('f-prio').value,
+    estado,
     apertura,
+    fechaAsignacion,
     cierre,
     desc,
-    notaTecnico:  document.getElementById('tk-nota-tec').value.trim(),
-    resolucion:   document.getElementById('tk-res').value.trim(),
-    estado,
-    slaHrs:       prod ? prod.slaHrs : 48
+    notaTecnico:     document.getElementById('f-nota').value.trim(),
+    resolucion:      document.getElementById('f-resol').value.trim(),
+    slaHrs:          48,
+    estadoAnterior:  estadoAnt
   };
 
   showLoading();
   try {
-    // Notificaciones por correo vía Apps Script
-    const notif = { accion: editingTicketId ? 'updateTicket' : 'saveTicket', ticket: tk, estadoAnterior };
-    await api(editingTicketId ? 'updateTicket' : 'saveTicket', { ...tk, _notif: notif });
-
-    if (editingTicketId) { const i = db.tickets.findIndex(t=>t.id===editingTicketId); db.tickets[i] = tk; }
+    await api(editingId?'updateTicket':'saveTicket', tk);
+    if(editingId){const i=db.tickets.findIndex(t=>t.id===editingId);db.tickets[i]=tk;}
     else db.tickets.push(tk);
     updateBadge();
-
-    // Mensaje según estado
-    const estadoLabel = { reporte:'Reporte', pendiente:'Pendiente', cita_coordinada:'Cita coordinada', en_revision:'En revisión', piezas_importacion:'Piezas en importación', cerrado:'Cerrado' };
-    toast(`Ticket guardado — Estado: ${estadoLabel[estado]||estado}`, 'success');
-    closeModal('modal-ticket');
-    renderSoporte(); renderDashboard();
-  } catch(e) { toast('Error: ' + e.message, 'error'); }
+    const lbl=ESTADOS[estado]?ESTADOS[estado].label:estado;
+    toast(`Ticket guardado — ${lbl}`,'success');
+    closeModal('modal-tk');
+    renderTickets(); renderDashboard();
+  } catch(e){toast('Error: '+e.message,'error');}
   hideLoading();
 }
 
 // ══════════════════════════════════════════════
-// RENDER FUNCIONES
+// EDIT TICKET
 // ══════════════════════════════════════════════
-function renderDashboard() {
-  document.getElementById('dash-fecha').textContent =
-    new Date().toLocaleDateString('es-PE', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+function editTicket(id){
+  const t=db.tickets.find(x=>x.id===id);
+  if(!t)return;
+  editingId=id;
+  document.getElementById('modal-tk-title').textContent='Actualizar — '+t.ticketNum;
 
-  const openTks   = db.tickets.filter(t => t.estado !== 'cerrado').length;
-  const delayTks  = db.tickets.filter(t => t.estado !== 'cerrado' && calcHrs(t.apertura) > (Number(t.slaHrs)||48)).length;
-  const totalMov  = db.movimientos.length;
-  const lowStock  = db.productos.filter(p => { const s=getStock(p.codigo); return s>0 && s<=p.stockMin; }).length;
+  document.getElementById('f-prod').value     = t.producto||'';
+  document.getElementById('f-marca').value    = t.marca||'';
+  document.getElementById('f-area').value     = t.area||'';
+  document.getElementById('f-serie').value    = t.serie||'';
+  document.getElementById('f-cliente').value  = t.cliente||'';
+  document.getElementById('f-contacto').value = t.contacto||'';
+  document.getElementById('f-prio').value     = t.prioridad||'media';
+  document.getElementById('f-desc').value     = t.desc||'';
+  document.getElementById('f-nota').value     = t.notaTecnico||'';
+  document.getElementById('f-resol').value    = t.resolucion||'';
+  document.getElementById('f-est').value      = t.estado||'reporte';
 
-  document.getElementById('dash-metrics').innerHTML = `
-    <div class="metric"><div class="label"><i class="ti ti-box"></i> Productos</div><div class="value">${db.productos.length}</div><div class="sub">en catálogo</div></div>
-    <div class="metric"><div class="label"><i class="ti ti-arrows-exchange"></i> Movimientos</div><div class="value">${totalMov}</div><div class="sub">registrados</div></div>
-    <div class="metric"><div class="label"><i class="ti ti-headset"></i> Tickets abiertos</div><div class="value" style="color:${openTks?'var(--amber)':'inherit'}">${openTks}</div><div class="sub">en seguimiento</div></div>
-    <div class="metric"><div class="label"><i class="ti ti-alert-circle"></i> SLA vencidos</div><div class="value" style="color:${delayTks?'var(--red)':'inherit'}">${delayTks}</div><div class="sub">requieren atención</div></div>
-    <div class="metric"><div class="label"><i class="ti ti-package"></i> Stock bajo</div><div class="value" style="color:${lowStock?'var(--amber)':'inherit'}">${lowStock}</div><div class="sub">productos</div></div>
+  // Datalist marcas
+  const dl=document.getElementById('list-marcas'); dl.innerHTML='';
+  cfg.marcas.forEach(m=>{const o=document.createElement('option');o.value=m;dl.appendChild(o);});
+
+  // Fechas
+  document.getElementById('f-apertura-lbl').textContent   = t.apertura?fmtDate(t.apertura):'—';
+  document.getElementById('f-asign-lbl').textContent      = t.fechaAsignacion?fmtDate(t.fechaAsignacion):'Sin asignar aún';
+  document.getElementById('f-cierre-lbl').textContent     = t.cierre?fmtDate(t.cierre):'Se registra al cerrar';
+  document.getElementById('f-cierre-g').style.display     = t.estado==='cerrado'?'':'none';
+  document.getElementById('f-resol-g').style.display      = t.estado==='cerrado'?'':'none';
+
+  // Técnicos y asesores
+  poblarTecnicos();
+  if(t.tecnico&&t.tecnicoEmail)document.getElementById('f-tec').value=t.tecnico+'|'+t.tecnicoEmail;
+  else if(t.tecnico){const o=document.createElement('option');o.value=t.tecnico+'|';o.textContent=t.tecnico;document.getElementById('f-tec').appendChild(o);document.getElementById('f-tec').value=t.tecnico+'|';}
+
+  poblarAsesores();
+  if(t.asesor&&t.asesorEmail)document.getElementById('f-asesor').value=t.asesor+'|'+t.asesorEmail;
+  document.getElementById('f-asesor-email').textContent=t.asesorEmail||'—';
+
+  openModal('modal-tk');
+}
+
+// ══════════════════════════════════════════════
+// RENDER DASHBOARD
+// ══════════════════════════════════════════════
+function renderDashboard(){
+  document.getElementById('dash-fecha').textContent=new Date().toLocaleDateString('es-PE',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  const abiertos=db.tickets.filter(t=>t.estado!=='cerrado');
+  const cerrados=db.tickets.filter(t=>t.estado==='cerrado');
+  const sinTec=abiertos.filter(t=>!t.tecnico);
+  const vencidos=abiertos.filter(t=>calcHrs(t.apertura)>(Number(t.slaHrs)||48));
+
+  document.getElementById('dash-metrics').innerHTML=`
+    <div class="metric"><div class="label"><i class="ti ti-ticket"></i>Tickets abiertos</div><div class="value" style="color:${abiertos.length?'var(--amber)':'inherit'}">${abiertos.length}</div></div>
+    <div class="metric"><div class="label"><i class="ti ti-user-off"></i>Sin técnico</div><div class="value" style="color:${sinTec.length?'var(--red)':'inherit'}">${sinTec.length}</div></div>
+    <div class="metric"><div class="label"><i class="ti ti-alarm"></i>SLA vencidos</div><div class="value" style="color:${vencidos.length?'var(--red)':'inherit'}">${vencidos.length}</div></div>
+    <div class="metric"><div class="label"><i class="ti ti-circle-check"></i>Cerrados total</div><div class="value" style="color:var(--green)">${cerrados.length}</div></div>
+    <div class="metric"><div class="label"><i class="ti ti-clock"></i>T. prom. cierre</div><div class="value" style="font-size:16px">${promHrs(cerrados)}</div><div class="sub">horas promedio</div></div>
   `;
 
-  // Tickets abiertos
-  const openList = db.tickets.filter(t => t.estado !== 'cerrado').slice(0, 6);
-  document.getElementById('dash-tickets').innerHTML = openList.length
-    ? openList.map(t => {
-        const h = calcHrs(t.apertura);
-        const over = h > (Number(t.slaHrs)||48);
-        return `<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border)">
-          <div><span style="font-size:12px;font-weight:600">${t.ticketNum}</span> <span style="font-size:12px;color:var(--text2)">${t.nombreProd}</span>${t.serie?`<span style="font-size:11px;color:var(--text3)"> · ${t.serie}</span>`:''}
-          <div style="font-size:11px;color:var(--text3)">${t.tecnico}</div></div>
-          <span style="font-family:monospace;font-size:12px" class="badge ${over?'b-delay':'b-pending'}">${fmtHrs(h)}</span>
-        </div>`;
-      }).join('')
-    : '<div class="empty" style="padding:1.5rem"><i class="ti ti-circle-check" style="color:var(--green)"></i><p>Sin tickets abiertos</p></div>';
-
-  // Últimos movimientos
-  const lastMov = db.movimientos.slice(0, 5);
-  document.getElementById('dash-movs').innerHTML = lastMov.length
-    ? lastMov.map(m => `<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border)">
-        <div><span class="badge b-${m.tipo}" style="margin-right:5px">${m.tipo}</span><span style="font-size:12px">${m.nombreProd||m.codigo}</span></div>
-        <span style="font-size:11px;color:var(--text3)">${fmtDate(m.fecha)}</span>
+  // Sin asignar
+  document.getElementById('dash-sin-asignar').innerHTML=sinTec.length
+    ?sinTec.map(t=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border)">
+        <div><span style="font-weight:600;font-size:12px">${t.ticketNum}</span> <span style="font-size:12px;color:var(--text2)">${t.cliente}</span><div style="font-size:11px;color:var(--text3)">${t.producto}</div></div>
+        <div style="text-align:right">${timeChip(calcHrs(t.apertura),Number(t.slaHrs)||48)}<div style="font-size:10px;color:var(--text3);margin-top:2px">${fmtDate(t.apertura)}</div></div>
       </div>`).join('')
-    : '<div class="empty" style="padding:1.5rem"><p>Sin movimientos aún</p></div>';
+    :'<div class="empty" style="padding:1.5rem"><i class="ti ti-circle-check" style="color:var(--green)"></i><p>Todos los tickets tienen técnico</p></div>';
 
-  // SLA barras
-  const closedTks = db.tickets.filter(t => t.estado === 'cerrado' && t.cierre).slice(-8);
-  document.getElementById('dash-sla').innerHTML = closedTks.length
-    ? closedTks.map(t => {
-        const h = calcHrs(t.apertura, t.cierre);
-        const sla = Number(t.slaHrs) || 48;
-        const pct = Math.min(100, Math.round(h / sla * 100));
-        const cls = pct > 100 ? 'pf-danger' : pct > 75 ? 'pf-warn' : 'pf-ok';
-        return `<div style="margin-bottom:10px">
-          <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px">
-            <span style="font-weight:500">${t.ticketNum}</span>
-            <span style="color:var(--text2)">${t.nombreProd}${t.serie?' · '+t.serie:''} — ${fmtHrs(h)} / ${sla}h SLA</span>
-          </div>
-          <div class="progress-bar"><div class="progress-fill ${cls}" style="width:${Math.min(100,pct)}%"></div></div>
-        </div>`;
-      }).join('')
-    : '<p style="font-size:13px;color:var(--text2)">No hay tickets cerrados aún para analizar tiempos.</p>';
+  // SLA riesgo
+  const riesgo=abiertos.filter(t=>calcHrs(t.apertura)>(Number(t.slaHrs)||48)*0.75).sort((a,b)=>calcHrs(b.apertura)-calcHrs(a.apertura));
+  document.getElementById('dash-sla-riesgo').innerHTML=riesgo.length
+    ?riesgo.map(t=>{const h=calcHrs(t.apertura);const sla=Number(t.slaHrs)||48;const pct=Math.min(100,Math.round(h/sla*100));
+      return`<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span><b>${t.ticketNum}</b> · ${t.cliente}</span><span style="color:var(--text2)">${fmtHrs(h)} / ${sla}h</span></div>
+      <div class="sla-bar"><div class="sla-fill ${pct>100?'sla-danger':'sla-warn'}" style="width:${Math.min(100,pct)}%"></div></div></div>`;
+    }).join('')
+    :'<div class="empty" style="padding:1.5rem"><i class="ti ti-shield-check" style="color:var(--green)"></i><p>Sin tickets en riesgo</p></div>';
+
+  // Tiempos cierre
+  const ult=cerrados.slice(-6);
+  document.getElementById('dash-tiempos').innerHTML=ult.length
+    ?ult.reverse().map(t=>{const h=calcHrs(t.apertura,t.cierre);const sla=Number(t.slaHrs)||48;const pct=Math.min(100,Math.round(h/sla*100));
+      return`<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span><b>${t.ticketNum}</b> · ${t.cliente} · ${t.tecnico||'—'}</span><span>${fmtHrs(h)} / ${sla}h SLA</span></div>
+      <div class="sla-bar"><div class="sla-fill ${pct>100?'sla-danger':pct>75?'sla-warn':'sla-ok'}" style="width:${Math.min(100,pct)}%"></div></div></div>`;
+    }).join('')
+    :'<p style="font-size:13px;color:var(--text2)">Sin tickets cerrados aún</p>';
 }
 
-function renderInventario() {
-  const q   = (document.getElementById('inv-q').value || '').toLowerCase();
-  const cat = document.getElementById('inv-cat').value;
-  const est = document.getElementById('inv-est').value;
-
-  // Poblar filtro categorías
-  const cats = [...new Set(db.productos.map(p => p.categoria))];
-  const catSel = document.getElementById('inv-cat');
-  const curCat = catSel.value;
-  catSel.innerHTML = '<option value="">Todas las categorías</option>';
-  cats.forEach(c => { const o=document.createElement('option'); o.value=c; o.textContent=c; catSel.appendChild(o); });
-  catSel.value = curCat;
-
-  let prods = db.productos;
-  if (cat) prods = prods.filter(p => p.categoria === cat);
-  if (q)   prods = prods.filter(p => (p.codigo+p.nombre+p.categoria+p.marca+p.modelo).toLowerCase().includes(q));
-
-  const rows = [];
-  for (const p of prods) {
-    const stock = getStock(p.codigo);
-    const sns   = getSNEnStock(p.codigo);
-    let stCls = 'ok';
-    if (stock === 0) stCls = 'out';
-    else if (stock <= p.stockMin) stCls = 'low';
-    if (est && est !== stCls) continue;
-    const stMap = { ok: ['b-stock','Normal'], low: ['b-low','Stock bajo'], out: ['b-out','Sin stock'] };
-    const lastMov = db.movimientos.filter(m => m.codigo === p.codigo)[0];
-    const snHtml = p.tieneSN === 'si'
-      ? (sns.slice(0,3).map(s=>`<span class="sn-chip">${s}</span>`).join('') + (sns.length>3?`<span style="font-size:11px;color:var(--text2)"> +${sns.length-3}</span>`:''))
-      : '—';
-    rows.push(`<tr>
-      <td><code>${p.codigo}</code></td>
-      <td><div style="font-weight:500">${p.nombre}</div>${p.marca?`<div style="font-size:11px;color:var(--text2)">${p.marca}${p.modelo?' · '+p.modelo:''}</div>`:''}</td>
-      <td>${p.categoria}</td>
-      <td style="font-size:16px;font-weight:600;text-align:center">${stock}</td>
-      <td><div class="sn-list">${snHtml}</div></td>
-      <td style="font-size:12px;color:var(--text2)">${lastMov&&lastMov.ubicacion?lastMov.ubicacion:'—'}</td>
-      <td><span class="badge ${stMap[stCls][0]}">${stMap[stCls][1]}</span></td>
-      <td style="white-space:nowrap">
-        <button class="btn btn-sm btn-icon" title="Registrar movimiento" onclick="openMovForProd('${p.codigo}')"><i class="ti ti-arrows-exchange"></i></button>
-        <button class="btn btn-sm btn-icon" title="Ver trazabilidad" onclick="goTraz('${p.codigo}')"><i class="ti ti-route"></i></button>
-      </td>
-    </tr>`);
-  }
-  document.getElementById('inv-tbody').innerHTML = rows.join('') ||
-    '<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--text2)">Sin resultados</td></tr>';
+function promHrs(tks){
+  const c=tks.filter(t=>t.apertura&&t.cierre);
+  if(!c.length)return'—';
+  const avg=c.reduce((s,t)=>s+calcHrs(t.apertura,t.cierre),0)/c.length;
+  return fmtHrs(avg);
 }
 
-function renderMovimientos() {
-  const tipo  = document.getElementById('mov-tipo').value;
-  const prod  = document.getElementById('mov-prod-f').value;
-  const desde = document.getElementById('mov-desde').value;
-  const hasta = document.getElementById('mov-hasta').value;
+// ══════════════════════════════════════════════
+// RENDER TICKETS
+// ══════════════════════════════════════════════
+function renderTickets(){
+  const q    = (document.getElementById('tk-q').value||'').toLowerCase();
+  const fest = document.getElementById('tk-f-est').value;
+  const ftec = document.getElementById('tk-f-tec').value;
+  const fas  = document.getElementById('tk-f-asesor').value;
+  const fprio= document.getElementById('tk-f-prio').value;
 
-  // Poblar select de producto
-  const sel = document.getElementById('mov-prod-f');
-  const cur = sel.value;
-  sel.innerHTML = '<option value="">Todos los productos</option>';
-  db.productos.forEach(p => { const o=document.createElement('option'); o.value=p.codigo; o.textContent=p.nombre+' ('+p.codigo+')'; sel.appendChild(o); });
-  sel.value = cur;
+  // Poblar filtros dinámicos
+  const ts=document.getElementById('tk-f-tec'); const tc=ts.value;
+  ts.innerHTML='<option value="">Todos los técnicos</option>';
+  cfg.tecnicos.forEach(t=>{const o=document.createElement('option');o.value=t.nombre;o.textContent=t.nombre;ts.appendChild(o);}); ts.value=tc;
 
-  let movs = db.movimientos;
-  if (tipo)  movs = movs.filter(m => m.tipo === tipo);
-  if (prod)  movs = movs.filter(m => m.codigo === prod);
-  if (desde) movs = movs.filter(m => m.fecha >= desde);
-  if (hasta) movs = movs.filter(m => m.fecha <= hasta + 'T23:59');
+  const as=document.getElementById('tk-f-asesor'); const ac=as.value;
+  as.innerHTML='<option value="">Todos los asesores</option>';
+  cfg.asesores.forEach(a=>{const o=document.createElement('option');o.value=a.nombre;o.textContent=a.nombre;as.appendChild(o);}); as.value=ac;
 
-  document.getElementById('mov-tbody').innerHTML = movs.length
-    ? movs.map(m => {
-        const sns = Array.isArray(m.series) ? m.series : [];
-        return `<tr>
-          <td style="font-size:12px;white-space:nowrap">${fmtDate(m.fecha)}</td>
-          <td><span class="badge b-${m.tipo}">${m.tipo}</span></td>
-          <td><div style="font-weight:500">${m.nombreProd||m.codigo}</div><code style="font-size:10px">${m.codigo}</code></td>
-          <td>${sns.length ? sns.map(s=>`<span class="sn-chip">${s}</span>`).join('') : '—'}</td>
-          <td style="text-align:center">${m.cantidad}</td>
-          <td style="font-size:12px">${m.ubicacion||'—'}</td>
-          <td style="font-size:12px">${m.responsable}</td>
-          <td style="font-size:11px;color:var(--text2)">${m.documento||'—'}</td>
-          <td style="font-size:12px;color:var(--text2);max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${m.nota||''}">${m.nota||'—'}</td>
-        </tr>`;
-      }).join('')
-    : '<tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--text2)">Sin movimientos</td></tr>';
-}
-
-const ESTADOS = {
-  reporte:            { label:'Reporte',              badge:'b-pending',  color:'var(--amber)' },
-  pendiente:          { label:'Pendiente',             badge:'b-pending',  color:'var(--amber)' },
-  cita_coordinada:    { label:'Cita coordinada',       badge:'b-progress', color:'var(--blue)' },
-  en_revision:        { label:'En revisión',           badge:'b-progress', color:'var(--blue)' },
-  piezas_importacion: { label:'Piezas en importación', badge:'b-alta',     color:'var(--red)' },
-  cerrado:            { label:'Cerrado',               badge:'b-closed',   color:'var(--gray-d)' }
-};
-
-function renderSoporte() {
-  const est  = document.getElementById('sop-est').value;
-  const prod = document.getElementById('sop-prod').value;
-  const prio = document.getElementById('sop-prio').value;
-
-  // Poblar selects dinámicos
-  const ps = document.getElementById('sop-prod'); const pc = ps.value;
-  ps.innerHTML = '<option value="">Todos los productos</option>';
-  db.productos.forEach(p => { const o=document.createElement('option'); o.value=p.codigo; o.textContent=p.nombre; ps.appendChild(o); });
-  ps.value = pc;
-
-  const ts = document.getElementById('sop-tec'); const tc = ts.value;
-  ts.innerHTML = '<option value="">Todos los técnicos</option>';
-  cfg.tecnicos.forEach(t => { const o=document.createElement('option'); o.value=t.nombre; o.textContent=t.nombre; ts.appendChild(o); });
-  ts.value = tc;
-
-  // Kanban resumen
-  const kanban = document.getElementById('sop-kanban');
-  kanban.innerHTML = Object.entries(ESTADOS).map(([k,v]) => {
-    const cnt = db.tickets.filter(t=>t.estado===k).length;
-    return `<div onclick="document.getElementById('sop-est').value='${k}';renderSoporte()" style="cursor:pointer;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.6rem .75rem;text-align:center;border-top:3px solid ${v.color}">
-      <div style="font-size:20px;font-weight:700;color:${v.color}">${cnt}</div>
-      <div style="font-size:11px;color:var(--text2);margin-top:2px">${v.label}</div>
+  // Kanban
+  const kanban=document.getElementById('kanban-estados');
+  kanban.style.gridTemplateColumns=`repeat(${Object.keys(ESTADOS).length},1fr)`;
+  kanban.innerHTML=Object.entries(ESTADOS).map(([k,v])=>{
+    const cnt=db.tickets.filter(t=>t.estado===k).length;
+    return`<div class="kanban-card" style="border-top-color:${v.color}" onclick="document.getElementById('tk-f-est').value='${k}';renderTickets()">
+      <div class="k-num" style="color:${v.color}">${cnt}</div>
+      <div class="k-lbl">${v.label}</div>
     </div>`;
   }).join('');
 
-  let tks = db.tickets;
-  if (est)  tks = tks.filter(t => t.estado === est);
-  if (prod) tks = tks.filter(t => t.codigo === prod);
-  if (prio) tks = tks.filter(t => t.prioridad === prio);
-  const tecF = document.getElementById('sop-tec').value;
-  if (tecF) tks = tks.filter(t => t.tecnico === tecF);
-  tks = [...tks].sort((a,b) => new Date(b.apertura) - new Date(a.apertura));
+  // Filtrar
+  let tks=db.tickets;
+  if(fest)  tks=tks.filter(t=>t.estado===fest);
+  if(ftec)  tks=tks.filter(t=>t.tecnico===ftec);
+  if(fas)   tks=tks.filter(t=>t.asesor===fas);
+  if(fprio) tks=tks.filter(t=>t.prioridad===fprio);
+  if(q) tks=tks.filter(t=>(t.ticketNum+t.cliente+t.producto+t.serie+t.tecnico+t.asesor+t.estado).toLowerCase().includes(q));
+  tks=[...tks].sort((a,b)=>new Date(b.apertura)-new Date(a.apertura));
 
-  document.getElementById('sop-tbody').innerHTML = tks.length
-    ? tks.map(t => {
-        const h = calcHrs(t.apertura, t.estado === 'cerrado' ? t.cierre : null);
-        const est = ESTADOS[t.estado] || { label: t.estado, badge:'b-closed' };
-        return `<tr>
-          <td><div style="font-size:12px;font-weight:600">${t.ticketNum}</div><span class="badge b-${t.prioridad}" style="margin-top:2px">${t.prioridad}</span></td>
-          <td><div style="font-size:13px;font-weight:500">${t.cliente||'—'}</div><div style="font-size:12px;color:var(--text2)">${t.nombreProd}</div>${t.serie?`<code style="font-size:10px">${t.serie}</code>`:''}</td>
-          <td style="font-size:11px">${t.serie||'<span style="color:var(--text3)">Pendiente</span>'}</td>
-          <td style="font-size:12px">${t.asesor||'—'}</td>
-          <td style="font-size:12px">${t.tecnico||'<span style="color:var(--text3)">Sin asignar</span>'}</td>
-          <td style="font-size:12px;white-space:nowrap">${fmtDate(t.apertura)}</td>
-          <td style="font-family:monospace;font-size:12px">${fmtHrs(h)}</td>
-          <td>${slaBadge(t)}</td>
-          <td><span class="badge ${est.badge}">${est.label}</span></td>
-          <td><button class="btn btn-sm btn-icon" title="Actualizar ticket" onclick="editTicket('${t.id}')"><i class="ti ti-edit"></i></button></td>
-        </tr>`;
-      }).join('')
-    : '<tr><td colspan="10" style="text-align:center;padding:2rem;color:var(--text2)">Sin tickets</td></tr>';
+  document.getElementById('tk-tbody').innerHTML=tks.length
+    ?tks.map(t=>{
+      const sla=Number(t.slaHrs)||48;
+      const hTotal=calcHrs(t.apertura,t.estado==='cerrado'?t.cierre:null);
+      const hAsign=t.fechaAsignacion?calcHrs(t.apertura,t.fechaAsignacion):null;
+      const est=ESTADOS[t.estado]||{label:t.estado,badge:'b-gray'};
+      return`<tr>
+        <td><div style="font-size:12px;font-weight:700">${t.ticketNum}</div><span class="badge b-${t.prioridad}" style="margin-top:2px">${t.prioridad}</span></td>
+        <td><div style="font-weight:500">${t.cliente}</div>${t.contacto?`<div style="font-size:11px;color:var(--text3)">${t.contacto}</div>`:''}</td>
+        <td><div style="font-size:13px">${t.producto||'—'}</div>${t.marca?`<div style="font-size:11px;color:var(--text3)">${t.marca}</div>`:''} ${t.serie?`<code style="font-size:10px">${t.serie}</code>`:''} ${t.area?`<span style="font-size:11px;color:var(--blue)">· ${t.area}</span>`:''}</td>
+        <td style="font-size:12px">${t.asesor||'<span style="color:var(--text3)">—</span>'}</td>
+        <td style="font-size:12px">${t.tecnico||'<span style="color:var(--red);font-size:11px">Sin asignar</span>'}</td>
+        <td>${timeChip(hAsign,sla*0.25)}</td>
+        <td>${timeChip(hTotal,sla)}</td>
+        <td>${slaBadge(t)}</td>
+        <td><span class="badge ${est.badge}">${est.label}</span></td>
+        <td><button class="btn btn-sm btn-icon" onclick="editTicket('${t.id}')"><i class="ti ti-edit"></i></button></td>
+      </tr>`;
+    }).join('')
+    :'<tr><td colspan="10" style="text-align:center;padding:2rem;color:var(--text2)">Sin tickets</td></tr>';
 }
 
-function renderCatalogo() {
-  document.getElementById('cat-tbody').innerHTML = db.productos.length
-    ? db.productos.map(p => `<tr>
-        <td><code>${p.codigo}</code></td>
-        <td style="font-weight:500">${p.nombre}</td>
-        <td>${p.categoria}</td>
-        <td style="color:var(--text2)">${[p.marca, p.modelo].filter(Boolean).join(' · ')||'—'}</td>
-        <td style="text-align:center">${p.stockMin}</td>
-        <td style="text-align:center">${p.slaHrs} hrs</td>
-        <td>${p.tieneSN==='si'?'<span class="badge b-ok">Sí</span>':'<span class="badge b-closed">No</span>'}</td>
-        <td><button class="btn btn-sm btn-icon" onclick="editProd('${p.id}')"><i class="ti ti-edit"></i></button></td>
-      </tr>`).join('')
-    : '<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--text2)">Sin productos. <a href="#" onclick="openModal(\'modal-prod\')">Agrega el primero.</a></td></tr>';
-}
+// ══════════════════════════════════════════════
+// RENDER REPORTES
+// ══════════════════════════════════════════════
+function renderReportes(){
+  const ftec=document.getElementById('rep-tec').value;
+  const fmes=document.getElementById('rep-mes').value;
 
-function populateTrazSelect() {
-  const sel = document.getElementById('traz-prod');
-  const cur = sel.value;
-  sel.innerHTML = '<option value="">Seleccionar producto...</option>';
-  db.productos.forEach(p => { const o=document.createElement('option'); o.value=p.codigo; o.textContent=p.nombre+' ('+p.codigo+')'; sel.appendChild(o); });
-  if (cur) sel.value = cur;
-}
+  // Poblar técnicos
+  const ts=document.getElementById('rep-tec'); const tc=ts.value;
+  ts.innerHTML='<option value="">Todos los técnicos</option>';
+  cfg.tecnicos.forEach(t=>{const o=document.createElement('option');o.value=t.nombre;o.textContent=t.nombre;ts.appendChild(o);}); ts.value=tc;
 
-function renderTraz() {
-  const codigo = document.getElementById('traz-prod').value;
-  const snQ    = (document.getElementById('traz-sn').value || '').trim().toLowerCase();
-  const el     = document.getElementById('traz-result');
-  if (!codigo && !snQ) { el.innerHTML = ''; return; }
+  // Poblar meses
+  const meses=[...new Set(db.tickets.map(t=>t.apertura?t.apertura.slice(0,7):null).filter(Boolean))].sort().reverse();
+  const ms=document.getElementById('rep-mes'); const mc=ms.value;
+  ms.innerHTML='<option value="">Todos los meses</option>';
+  meses.forEach(m=>{const o=document.createElement('option');o.value=m;const d=new Date(m+'-01');o.textContent=d.toLocaleDateString('es-PE',{month:'long',year:'numeric'});ms.appendChild(o);}); ms.value=mc;
 
-  let movs = db.movimientos;
-  if (codigo) movs = movs.filter(m => m.codigo === codigo);
-  if (snQ)    movs = movs.filter(m => {
-    const sns = Array.isArray(m.series) ? m.series : [];
-    return sns.some(s => s.toLowerCase().includes(snQ));
+  let tks=db.tickets;
+  if(ftec) tks=tks.filter(t=>t.tecnico===ftec);
+  if(fmes) tks=tks.filter(t=>t.apertura&&t.apertura.startsWith(fmes));
+
+  const cerrados=tks.filter(t=>t.estado==='cerrado'&&t.apertura&&t.cierre);
+  const abiertos=tks.filter(t=>t.estado!=='cerrado');
+  const cumplieron=cerrados.filter(t=>calcHrs(t.apertura,t.cierre)<=(Number(t.slaHrs)||48));
+  const pct=cerrados.length?Math.round(cumplieron.length/cerrados.length*100):0;
+  const avgTotal=cerrados.length?(cerrados.reduce((s,t)=>s+calcHrs(t.apertura,t.cierre),0)/cerrados.length).toFixed(1):'—';
+  const conAsign=tks.filter(t=>t.fechaAsignacion&&t.apertura);
+  const avgAsign=conAsign.length?(conAsign.reduce((s,t)=>s+calcHrs(t.apertura,t.fechaAsignacion),0)/conAsign.length).toFixed(1):'—';
+
+  document.getElementById('rep-metrics').innerHTML=`
+    <div class="metric"><div class="label">Total tickets</div><div class="value">${tks.length}</div></div>
+    <div class="metric"><div class="label">Abiertos</div><div class="value" style="color:var(--amber)">${abiertos.length}</div></div>
+    <div class="metric"><div class="label">Cerrados</div><div class="value" style="color:var(--green)">${cerrados.length}</div></div>
+    <div class="metric"><div class="label">% SLA cumplido</div><div class="value" style="color:${pct>=80?'var(--green)':pct>=60?'var(--amber)':'var(--red)'}">${pct}%</div></div>
+    <div class="metric"><div class="label">T. prom. total</div><div class="value" style="font-size:16px">${avgTotal}</div><div class="sub">horas</div></div>
+    <div class="metric"><div class="label">T. prom. asignación</div><div class="value" style="font-size:16px">${avgAsign}</div><div class="sub">horas</div></div>
+  `;
+
+  // Por técnico
+  const porTec={};
+  tks.forEach(t=>{
+    const k=t.tecnico||'Sin asignar';
+    if(!porTec[k])porTec[k]={total:0,cerrados:0,cumplieron:0,horas:[]};
+    porTec[k].total++;
+    if(t.estado==='cerrado'&&t.cierre){porTec[k].cerrados++;const h=calcHrs(t.apertura,t.cierre);porTec[k].horas.push(h);if(h<=(Number(t.slaHrs)||48))porTec[k].cumplieron++;}
   });
+  document.getElementById('rep-por-tec').innerHTML=Object.keys(porTec).length
+    ?`<table style="width:100%;font-size:12px;border-collapse:collapse">
+      <thead><tr><th style="text-align:left;padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text2)">Técnico</th><th style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text2);text-align:center">Total</th><th style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text2);text-align:center">Cerrados</th><th style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text2);text-align:center">% SLA</th><th style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--text2);text-align:center">Prom. hrs</th></tr></thead>
+      <tbody>${Object.entries(porTec).map(([k,v])=>{
+        const pctT=v.cerrados?Math.round(v.cumplieron/v.cerrados*100):0;
+        const avgT=v.horas.length?(v.horas.reduce((a,b)=>a+b,0)/v.horas.length).toFixed(1):'—';
+        return`<tr><td style="padding:6px 8px;font-weight:500">${k}</td><td style="text-align:center;padding:6px 8px">${v.total}</td><td style="text-align:center;padding:6px 8px">${v.cerrados}</td><td style="text-align:center;padding:6px 8px"><span class="badge ${pctT>=80?'b-green':pctT>=60?'b-amber':'b-red'}">${v.cerrados?pctT+'%':'—'}</span></td><td style="text-align:center;padding:6px 8px">${avgT}</td></tr>`;
+      }).join('')}</tbody></table>`
+    :'<p style="font-size:13px;color:var(--text2)">Sin datos</p>';
 
-  let tks = db.tickets;
-  if (codigo) tks = tks.filter(t => t.codigo === codigo);
-  if (snQ)    tks = tks.filter(t => t.serie && t.serie.toLowerCase().includes(snQ));
+  // Tiempo asignación por técnico
+  const asignPorTec={};
+  conAsign.forEach(t=>{
+    const k=t.tecnico||'Sin nombre';
+    if(!asignPorTec[k])asignPorTec[k]=[];
+    asignPorTec[k].push(calcHrs(t.apertura,t.fechaAsignacion));
+  });
+  document.getElementById('rep-asignacion').innerHTML=Object.keys(asignPorTec).length
+    ?Object.entries(asignPorTec).map(([k,v])=>{
+        const avg=(v.reduce((a,b)=>a+b,0)/v.length);
+        const cls=avg<4?'sla-ok':avg<24?'sla-warn':'sla-danger';
+        return`<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px"><span style="font-weight:500">${k}</span><span>${fmtHrs(avg)} prom.</span></div>
+        <div class="sla-bar"><div class="sla-fill ${cls}" style="width:${Math.min(100,Math.round(avg/48*100))}%"></div></div></div>`;
+      }).join('')
+    :'<p style="font-size:13px;color:var(--text2)">Sin asignaciones registradas</p>';
 
-  if (!movs.length && !tks.length) {
-    el.innerHTML = '<div class="card"><div class="empty"><i class="ti ti-search"></i><p>Sin registros para esta búsqueda</p></div></div>';
-    return;
-  }
-
-  const prod = codigo ? db.productos.find(p => p.codigo === codigo) : null;
-
-  // Mezclar y ordenar cronológicamente
-  const events = [
-    ...movs.map(m => ({ ...m, _type: 'mov', _date: m.fecha })),
-    ...tks.map(t => ({ ...t, _type: 'tk', _date: t.apertura }))
-  ].sort((a,b) => new Date(a._date) - new Date(b._date));
-
-  const timeline = events.map(e => {
-    if (e._type === 'mov') {
-      const sns = Array.isArray(e.series) ? e.series : [];
-      return `<div class="tl-item">
-        <div class="tl-date">${fmtDate(e.fecha)}</div>
-        <div class="tl-title"><span class="badge b-${e.tipo}" style="margin-right:6px">${e.tipo}</span>${e.nombreProd||e.codigo} ${e.cantidad>1?'× '+e.cantidad:''}</div>
-        <div class="tl-sub">Responsable: ${e.responsable}${e.ubicacion?' · '+e.ubicacion:''}${e.proveedor?' · '+e.proveedor:''}${e.documento?' · Doc: '+e.documento:''}</div>
-        ${sns.length?`<div class="sn-list" style="margin-top:4px">${sns.map(s=>`<span class="sn-chip">${s}</span>`).join('')}</div>`:''}
-        ${e.nota?`<div class="tl-sub" style="font-style:italic;margin-top:3px">"${e.nota}"</div>`:''}
-      </div>`;
-    } else {
-      const estBadge = { pendiente:'b-pending', en_revision:'b-progress', cerrado:'b-closed' };
-      const over = calcHrs(e.apertura, e.cierre) > (Number(e.slaHrs)||48);
-      return `<div class="tl-item ${over&&e.estado!=='cerrado'?'danger':'warn'}">
-        <div class="tl-date">${fmtDate(e.apertura)} · Ticket soporte</div>
-        <div class="tl-title">${e.ticketNum} — ${e.desc.slice(0,90)}${e.desc.length>90?'...':''}</div>
-        <div class="tl-sub">Técnico: ${e.tecnico}${e.serie?' · Serie: '+e.serie:''} · <span class="badge ${estBadge[e.estado]||''}">${e.estado.replace('_',' ')}</span> · ${fmtHrs(calcHrs(e.apertura,e.cierre))}</div>
-        ${e.resolucion?`<div class="tl-sub" style="margin-top:3px;color:var(--green-d)">✓ ${e.resolucion.slice(0,100)}</div>`:''}
-      </div>`;
-    }
-  }).join('');
-
-  el.innerHTML = `
-    ${prod ? `<div class="card" style="margin-bottom:1rem">
-      <div style="display:flex;align-items:center;gap:12px">
-        <div style="width:44px;height:44px;border-radius:50%;background:var(--green-l);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--green-d)"><i class="ti ti-package"></i></div>
-        <div>
-          <div style="font-weight:600;font-size:15px">${prod.nombre}</div>
-          <div style="font-size:12px;color:var(--text2)">${prod.codigo} · ${prod.categoria}${prod.marca?' · '+prod.marca:''}${prod.modelo?' '+prod.modelo:''}</div>
-        </div>
-        <div style="margin-left:auto;text-align:right">
-          <div style="font-size:26px;font-weight:700">${getStock(prod.codigo)}</div>
-          <div style="font-size:11px;color:var(--text2)">en stock</div>
-        </div>
-      </div>
-    </div>` : ''}
-    <div class="card">
-      <div class="card-title"><i class="ti ti-route" style="color:var(--green)"></i>Historial cronológico</div>
-      <div class="timeline">${timeline}</div>
-    </div>`;
+  // Tabla detalle
+  document.getElementById('rep-tbody').innerHTML=cerrados.sort((a,b)=>new Date(b.apertura)-new Date(a.apertura)).map(t=>{
+    const hT=calcHrs(t.apertura,t.cierre);
+    const hA=t.fechaAsignacion?calcHrs(t.apertura,t.fechaAsignacion):null;
+    const sla=Number(t.slaHrs)||48;
+    const ok=hT<=sla;
+    return`<tr>
+      <td style="font-weight:600;font-size:12px">${t.ticketNum}</td>
+      <td style="font-size:12px">${t.cliente}</td>
+      <td style="font-size:12px">${t.tecnico||'—'}</td>
+      <td style="font-size:11px;white-space:nowrap">${fmtDate(t.apertura)}</td>
+      <td>${hA!==null?timeChip(hA,sla*0.25):'<span style="color:var(--text3);font-size:12px">—</span>'}</td>
+      <td>${timeChip(hT,sla)}</td>
+      <td style="font-size:12px;text-align:center">${sla}h</td>
+      <td><span class="badge ${ok?'b-green':'b-red'}">${ok?'✓ Cumplido':'✗ Vencido'}</span></td>
+    </tr>`;
+  }).join('')||'<tr><td colspan="8" style="text-align:center;padding:1.5rem;color:var(--text2)">Sin tickets cerrados</td></tr>';
 }
 
-// ── Edit helpers ─────────────────────────────────
-function editProd(id) {
-  const p = db.productos.find(x => x.id === id);
-  if (!p) return;
-  editingProdId = id;
-  document.getElementById('p-codigo').value  = p.codigo;
-  document.getElementById('p-nombre').value  = p.nombre;
-  document.getElementById('p-cat').value     = p.categoria;
-  document.getElementById('p-marca').value   = p.marca || '';
-  document.getElementById('p-modelo').value  = p.modelo || '';
-  document.getElementById('p-smin').value    = p.stockMin;
-  document.getElementById('p-sla').value     = p.slaHrs;
-  document.getElementById('p-sn').value      = p.tieneSN;
-  document.getElementById('p-desc').value    = p.desc || '';
-  document.getElementById('prod-title').textContent = 'Editar producto';
-  openModal('modal-prod');
-}
-
-function editTicket(id) {
-  const t = db.tickets.find(x => x.id === id);
-  if (!t) return;
-  editingTicketId = id;
-
-  document.getElementById('modal-ticket').classList.add('open');
-  document.getElementById('tk-title').textContent = 'Actualizar — ' + t.ticketNum;
-
-  // Producto y serie
-  populateSelect('tk-prod', db.productos, 'codigo', p => p.nombre + ' (' + p.codigo + ')');
-  document.getElementById('tk-prod').value = t.codigo;
-  onTkProd();
-  setTimeout(() => { document.getElementById('tk-sn').value = t.serie || ''; }, 80);
-  document.getElementById('tk-sn-manual').value = '';
-
-  // Datos del reporte
-  document.getElementById('tk-cliente').value = t.cliente || '';
-  document.getElementById('tk-prio').value    = t.prioridad || 'media';
-  document.getElementById('tk-desc').value    = t.desc || '';
-
-  // Asesor
-  const asSel = document.getElementById('tk-asesor');
-  asSel.innerHTML = '<option value="">Seleccionar asesor...</option>';
-  cfg.asesores.forEach(a => { const o=document.createElement('option'); o.value=a.nombre+'|'+a.email; o.textContent=a.nombre; asSel.appendChild(o); });
-  if (t.asesor && t.asesorEmail) asSel.value = t.asesor+'|'+t.asesorEmail;
-  document.getElementById('tk-asesor-email').textContent = t.asesorEmail || '—';
-
-  // Técnico
-  const tecSel = document.getElementById('tk-tec');
-  tecSel.innerHTML = '<option value="">Sin asignar aún</option>';
-  cfg.tecnicos.forEach(x => { const o=document.createElement('option'); o.value=x.nombre+'|'+x.email; o.textContent=x.nombre+(x.rol==='jefe'?' ★':''); tecSel.appendChild(o); });
-  if (t.tecnico && t.tecnicoEmail) tecSel.value = t.tecnico+'|'+t.tecnicoEmail;
-  else if (t.tecnico) {
-    // compatibilidad con tickets anteriores
-    const opt = document.createElement('option');
-    opt.value = t.tecnico+'|'; opt.textContent = t.tecnico; tecSel.appendChild(opt);
-    tecSel.value = t.tecnico+'|';
-  }
-
-  // Estado y fechas
-  document.getElementById('tk-est').value = t.estado || 'reporte';
-  document.getElementById('tk-ap-display').textContent = t.apertura ? fmtDate(t.apertura) : '—';
-  document.getElementById('tk-ci-display').textContent = t.cierre ? fmtDate(t.cierre) : 'Se registra al cerrar';
-  document.getElementById('tk-ci-g').style.display  = t.estado === 'cerrado' ? '' : 'none';
-  document.getElementById('tk-res-g').style.display = t.estado === 'cerrado' ? '' : 'none';
-
-  // Notas y resolución
-  document.getElementById('tk-nota-tec').value = t.notaTecnico || '';
-  document.getElementById('tk-res').value      = t.resolucion  || '';
-}
-
-function openMovForProd(codigo) {
-  openModal('modal-mov');
-  setTimeout(() => { document.getElementById('m-prod').value = codigo; onMProd(); }, 60);
-}
-
-function goTraz(codigo) {
-  nav('trazabilidad');
-  setTimeout(() => { populateTrazSelect(); document.getElementById('traz-prod').value = codigo; renderTraz(); }, 60);
-}
-
-// ── Init ─────────────────────────────────────────
-document.querySelectorAll('.modal-backdrop').forEach(el => {
-  el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); });
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+document.querySelectorAll('.modal-backdrop').forEach(el=>{
+  el.addEventListener('click',e=>{if(e.target===el)el.classList.remove('open');});
 });
 
-// Iniciar verificando sesión Google
 checkSession();
-
-// Auto-refresh cada 2 minutos si hay sesión activa
-setInterval(() => { if (SCRIPT_URL && currentUser) loadData(); }, 120000);
+setInterval(()=>{if(SCRIPT_URL&&currentUser)loadData();},120000);
 </script>
 </body>
 </html>
