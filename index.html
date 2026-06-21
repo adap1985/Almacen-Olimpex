@@ -407,14 +407,33 @@ code{font-family:monospace;font-size:.88em;background:var(--surface2);padding:1p
     </div>
   </div>
 
-  <!-- Marcas -->
+  <!-- Marcas + SLA -->
   <div class="card">
-    <div class="card-title"><i class="ti ti-building-factory-2" style="color:var(--green)"></i>Marcas / fabricantes que manejamos</div>
-    <div style="display:flex;gap:8px;margin-bottom:8px">
-      <input id="cfg-marca-n" type="text" placeholder="Ej: Philips, GE Healthcare, Siemens..." style="flex:1;padding:7px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px" onkeydown="if(event.key==='Enter'){addMarca()}">
+    <div class="card-title"><i class="ti ti-building-factory-2" style="color:var(--green)"></i>Marcas y tiempos SLA</div>
+    <!-- SLA global de asignación -->
+    <div style="display:flex;align-items:center;gap:12px;padding:.6rem .9rem;background:var(--blue-l);border-radius:var(--radius);margin-bottom:1rem">
+      <i class="ti ti-clock" style="color:var(--blue-d);font-size:18px"></i>
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:600;color:var(--blue-d)">SLA de asignación de técnico (global)</div>
+        <div style="font-size:11px;color:var(--blue-d);opacity:.8">Tiempo máximo para asignar un técnico a cualquier ticket</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px">
+        <input id="cfg-sla-asign" type="number" min="1" value="24" style="width:65px;padding:5px 8px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px;text-align:center">
+        <span style="font-size:12px;color:var(--blue-d)">horas</span>
+        <button class="btn btn-sm" onclick="saveSlaAsign()" style="background:var(--blue);border-color:var(--blue);color:#fff"><i class="ti ti-check"></i></button>
+      </div>
+    </div>
+    <!-- Marcas con SLA de cierre -->
+    <div style="font-size:12px;font-weight:500;color:var(--text2);margin-bottom:6px">Marcas con SLA de cierre (horas para resolver)</div>
+    <div style="display:grid;grid-template-columns:1fr auto auto auto;gap:6px;margin-bottom:8px;align-items:end">
+      <div class="form-group" style="margin:0"><input id="cfg-marca-n" type="text" placeholder="Nombre de la marca" onkeydown="if(event.key==='Enter')addMarca()"></div>
+      <div class="form-group" style="margin:0">
+        <input id="cfg-marca-sla-cierre" type="number" min="1" value="48" style="width:70px;padding:7px 8px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px;text-align:center" title="SLA cierre (horas)">
+      </div>
+      <div style="font-size:11px;color:var(--text2);padding-bottom:2px">hrs cierre</div>
       <button class="btn btn-sm btn-primary" onclick="addMarca()"><i class="ti ti-plus"></i>Agregar</button>
     </div>
-    <div id="cfg-marca-list" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+    <div id="cfg-marca-list"></div>
   </div>
 </div>
 
@@ -526,7 +545,7 @@ code{font-family:monospace;font-size:.88em;background:var(--surface2);padding:1p
         <input id="f-informe-num" type="text" placeholder="Ej: INF-2025-001">
       </div>
       <div class="form-group"><label>Fecha del informe</label>
-        <input id="f-informe-fecha" type="date">
+        <div class="auto-field"><i class="ti ti-lock" style="font-size:13px;color:var(--text3)"></i><span id="f-informe-fecha-lbl">—</span><span class="auto-tag">Auto al cerrar</span></div>
       </div>
     </div>
   </div>
@@ -628,7 +647,7 @@ function checkSession() {
 // CONFIG & DB
 // ══════════════════════════════════════════════
 let SCRIPT_URL = localStorage.getItem('oc_script_url') || 'https://script.google.com/a/macros/olimpexperu.com/s/AKfycbwHys9_QTbgDjjJlEQX6QFfJru6cz_x2SE_EYWcUwtx_vDp61ErUFrM2q9OC3dYBfslcQ/exec';
-let cfg = { marcas:[], tecnicos:[], asesores:[] };
+let cfg = { marcas:[], tecnicos:[], asesores:[], slaAsignacion:24 };
 let db  = { tickets: [] };
 let editingId = null;
 
@@ -642,7 +661,7 @@ function saveConfig() {
 // ── Guardar config en Sheets ──
 async function pushConfig() {
   try {
-    await api('saveConfig', cfg);
+    await api('saveConfig', { tecnicos: cfg.tecnicos, asesores: cfg.asesores, marcas: cfg.marcas, slaAsignacion: cfg.slaAsignacion||24 });
     toast('Configuración guardada', 'success');
     aplicarRol();
   } catch(e) { toast('Error al guardar config: '+e.message,'error'); }
@@ -689,19 +708,44 @@ function renderCfgAs(){
     :'<p style="font-size:12px;color:var(--text3)">Sin asesores</p>';
 }
 
-// ── Marcas ──
+// ── Marcas con SLA ──
 function addMarca(){
-  const v=document.getElementById('cfg-marca-n').value.trim();
-  if(!v)return;
-  if(!cfg.marcas.includes(v)) cfg.marcas.push(v);
-  document.getElementById('cfg-marca-n').value=''; renderCfgMarcas();
-  pushConfig();
+  const n=document.getElementById('cfg-marca-n').value.trim();
+  const slaCierre=Number(document.getElementById('cfg-marca-sla-cierre').value)||48;
+  if(!n)return;
+  // marcas ahora son objetos {nombre, slaCierre}
+  if(!cfg.marcas.find(m=>m.nombre===n)) cfg.marcas.push({nombre:n, slaCierre});
+  document.getElementById('cfg-marca-n').value='';
+  document.getElementById('cfg-marca-sla-cierre').value='48';
+  renderCfgMarcas(); pushConfig();
 }
-function delMarca(m){cfg.marcas=cfg.marcas.filter(x=>x!==m);renderCfgMarcas();pushConfig();}
+function delMarca(n){cfg.marcas=cfg.marcas.filter(m=>m.nombre!==n);renderCfgMarcas();pushConfig();}
 function renderCfgMarcas(){
-  document.getElementById('cfg-marca-list').innerHTML=cfg.marcas.map(m=>
-    `<span style="background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:3px 8px;font-size:12px;display:inline-flex;align-items:center;gap:5px">${m}<span onclick="delMarca('${m}')" style="cursor:pointer;color:var(--text3);font-size:11px">✕</span></span>`
-  ).join('')||'<span style="font-size:12px;color:var(--text3)">Sin marcas</span>';
+  const el=document.getElementById('cfg-marca-list');
+  const marcas=cfg.marcas.map(m=>typeof m==='string'?{nombre:m,slaCierre:48}:m);
+  el.innerHTML=marcas.length
+    ?`<table style="width:100%;font-size:13px;border-collapse:collapse">
+      <thead><tr>
+        <th style="text-align:left;padding:5px 8px;border-bottom:1px solid var(--border);color:var(--text2);font-weight:500">Marca</th>
+        <th style="text-align:center;padding:5px 8px;border-bottom:1px solid var(--border);color:var(--text2);font-weight:500">SLA Asignación</th>
+        <th style="text-align:center;padding:5px 8px;border-bottom:1px solid var(--border);color:var(--text2);font-weight:500">SLA Cierre</th>
+        <th></th>
+      </tr></thead>
+      <tbody>${marcas.map(m=>`<tr>
+        <td style="padding:6px 8px;font-weight:500">${m.nombre}</td>
+        <td style="text-align:center;padding:6px 8px"><span class="badge b-blue">${cfg.slaAsignacion||24} hrs</span></td>
+        <td style="text-align:center;padding:6px 8px"><span class="badge b-amber">${m.slaCierre} hrs</span></td>
+        <td style="text-align:right;padding:6px 8px"><button class="btn btn-sm btn-icon" onclick="delMarca('${m.nombre}')"><i class="ti ti-trash" style="color:var(--red)"></i></button></td>
+      </tr>`).join('')}</tbody>
+    </table>`
+    :'<p style="font-size:12px;color:var(--text3)">Sin marcas</p>';
+}
+
+function saveSlaAsign(){
+  const h=Number(document.getElementById('cfg-sla-asign').value)||24;
+  cfg.slaAsignacion=h;
+  toast('SLA de asignación actualizado: '+h+' horas','success');
+  pushConfig();
 }
 
 // ══════════════════════════════════════════════
@@ -752,10 +796,14 @@ async function loadData() {
     db.tickets = data.tickets || [];
     // Cargar config desde Sheets — disponible para todos los usuarios
     if (data.config) {
-      cfg.tecnicos = data.config.tecnicos || [];
-      cfg.asesores = data.config.asesores || [];
-      cfg.marcas   = data.config.marcas   || [];
-      aplicarRol(); // Re-evaluar rol con config actualizada
+      cfg.tecnicos     = data.config.tecnicos     || [];
+      cfg.asesores     = data.config.asesores     || [];
+      cfg.marcas       = data.config.marcas       || [];
+      cfg.slaAsignacion= data.config.slaAsignacion|| 24;
+      aplicarRol();
+      // Actualizar campo SLA asignación en config si está visible
+      const slaEl = document.getElementById('cfg-sla-asign');
+      if(slaEl) slaEl.value = cfg.slaAsignacion;
     }
     updateBadge();
     document.getElementById('sync-time').textContent = 'Sync: '+new Date().toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit'});
@@ -844,7 +892,8 @@ function toast(msg,type=''){
 function abrirNuevo(){
   editingId=null;
   document.getElementById('modal-tk-title').textContent='Nuevo ticket de soporte';
-  ['f-prod','f-marca','f-area','f-serie','f-cliente','f-contacto','f-desc','f-nota','f-resol','f-informe-num','f-informe-fecha'].forEach(id=>document.getElementById(id).value='');
+  ['f-prod','f-marca','f-area','f-serie','f-cliente','f-contacto','f-desc','f-nota','f-resol','f-informe-num'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-informe-fecha-lbl').textContent='—';
   document.getElementById('f-prio').value='media';
   document.getElementById('f-est').value='reporte';
   document.getElementById('f-apertura-lbl').textContent=fmtDateNow(new Date());
@@ -884,8 +933,10 @@ function onEstado(){
   document.getElementById('f-cierre-g').style.display  = esCerrado?'':'none';
   document.getElementById('f-resol-g').style.display   = esCerrado?'':'none';
   document.getElementById('f-informe-g').style.display = esCerrado?'':'none';
-  if(esCerrado && !document.getElementById('f-informe-fecha').value)
-    document.getElementById('f-informe-fecha').value=new Date().toISOString().slice(0,10);
+  if(esCerrado){
+    const hoy=new Date();
+    document.getElementById('f-informe-fecha-lbl').textContent=hoy.toLocaleDateString('es-PE',{day:'2-digit',month:'2-digit',year:'numeric'});
+  }
 }
 
 function openModal(id){document.getElementById(id).classList.add('open');}
@@ -945,8 +996,9 @@ async function saveTicket(){
     notaTecnico:     document.getElementById('f-nota').value.trim(),
     resolucion:      document.getElementById('f-resol').value.trim(),
     informeNum:      document.getElementById('f-informe-num').value.trim(),
-    informeFecha:    document.getElementById('f-informe-fecha').value||null,
-    slaHrs:          48,
+    informeFecha:    estado==='cerrado' ? new Date().toISOString().slice(0,10) : (existing?existing.informeFecha:null),
+    slaHrs:          getSlacierre(document.getElementById('f-marca').value.trim()),
+    slaAsignacion:   cfg.slaAsignacion||24,
     estadoAnterior:  estadoAnt,
     tecnicoAnterior: tecnicoAnt
   };
@@ -1001,8 +1053,12 @@ function editTicket(id){
   document.getElementById('f-cierre-g').style.display   = t.estado==='cerrado'?'':'none';
   document.getElementById('f-resol-g').style.display    = t.estado==='cerrado'?'':'none';
   document.getElementById('f-informe-g').style.display  = t.estado==='cerrado'?'':'none';
-  document.getElementById('f-informe-num').value   = t.informeNum||'';
-  document.getElementById('f-informe-fecha').value = t.informeFecha||'';
+  document.getElementById('f-informe-num').value = t.informeNum||'';
+  if(t.informeFecha){
+    document.getElementById('f-informe-fecha-lbl').textContent = new Date(t.informeFecha+'T12:00:00').toLocaleDateString('es-PE',{day:'2-digit',month:'2-digit',year:'numeric'});
+  } else {
+    document.getElementById('f-informe-fecha-lbl').textContent = t.estado==='cerrado'?new Date().toLocaleDateString('es-PE',{day:'2-digit',month:'2-digit',year:'numeric'}):'—';
+  }
 
   // Técnicos y asesores
   poblarTecnicos();
@@ -1019,6 +1075,11 @@ function editTicket(id){
 // ══════════════════════════════════════════════
 // RENDER DASHBOARD
 // ══════════════════════════════════════════════
+function getSlacierre(marca){
+  const m=cfg.marcas.find(x=>(typeof x==='object'?x.nombre:x)===marca);
+  return m?(typeof m==='object'?m.slaCierre:48):48;
+}
+
 // ══════════════════════════════════════════════
 // RENDER INFORMES
 // ══════════════════════════════════════════════
@@ -1151,7 +1212,7 @@ function renderTickets(){
         <td><div style="font-size:13px">${t.producto||'—'}</div>${t.marca?`<div style="font-size:11px;color:var(--text3)">${t.marca}</div>`:''} ${t.serie?`<code style="font-size:10px">${t.serie}</code>`:''} ${t.area?`<span style="font-size:11px;color:var(--blue)">· ${t.area}</span>`:''}</td>
         <td style="font-size:12px">${t.asesor||'<span style="color:var(--text3)">—</span>'}</td>
         <td style="font-size:12px">${t.tecnico||'<span style="color:var(--red);font-size:11px">Sin asignar</span>'}</td>
-        <td>${timeChip(hAsign,sla*0.25)}</td>
+        <td>${timeChip(hAsign, Number(t.slaAsignacion)||cfg.slaAsignacion||24)}</td>
         <td>${timeChip(hTotal,sla)}</td>
         <td>${slaBadge(t)}</td>
         <td><span class="badge ${est.badge}">${est.label}</span></td>
